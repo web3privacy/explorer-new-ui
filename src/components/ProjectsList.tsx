@@ -1,8 +1,17 @@
 import { getProjects } from "@/queries/projects.queries";
+import { ProjectFilters } from "@/types";
 import { Button } from "./ui/button";
 
 export async function ProjectsList() {
-  const projects = await getProjects();
+  const filters: ProjectFilters = {
+    filters: { categories: ["applications"], ecosystems: ["solana"] },
+    sortBy: "name",
+    sortDirection: "asc",
+    page: 1,
+    pageSize: 5,
+  };
+
+  const projects = await getProjects(filters);
 
   return (
     <div className="min-h-screen p-8">
