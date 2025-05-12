@@ -1,57 +1,35 @@
-import { Project, ProjectFilters } from "@/types";
-import _ from "lodash";
+import { GETProjectsResponse } from "@/app/api/projects/route";
+import { ProjectFilters } from "@/types/projectFilters";
 
-export function processData(
-  projects: Project[],
-  params: ProjectFilters
-): Project[] {
-  const {
-    filters = {},
-    sortBy,
-    sortDirection = "asc",
-    page = 1,
-    pageSize = 10,
-  } = params;
+export const createParams = (filters: ProjectFilters): string => {
+  const params = new URLSearchParams();
 
-  let result = projects;
-
-  // ✅ Filtrar usando _.matches
-  if (filters.categories?.length) {
-    result = _.filter(
-      result,
-      (project) =>
-        _.intersection(project.categories, filters.categories!).length > 0
-    );
+  if (filters.categories) {
+    filters.categories.forEach((cat) => params.append("categories", cat));
   }
 
-  if (filters.ecosystems?.length) {
-    result = _.filter(
-      result,
-      (project) =>
-        _.intersection(project.ecosystem, filters.ecosystems!).length > 0
-    );
+  if (filters.ecosystems) {
+    filters.ecosystems.forEach((eco) => params.append("ecosystems", eco));
   }
 
-  // ✅ Ordenar si se pidió
-  if (sortBy) {
-    result = _.orderBy(result, [sortBy], [sortDirection]);
-  }
+  if (filters.sortBy) params.set("sortBy", filters.sortBy);
+  if (filters.sortOrder) params.set("sortOrder", filters.sortOrder);
+  if (filters.page) params.set("page", filters.page.toString());
+  if (filters.pageSize) params.set("pageSize", filters.pageSize.toString());
 
-  // ✅ Paginar
-  const start = (page - 1) * pageSize;
-  const end = start + pageSize;
-
-  return _.slice(result, start, end) as Project[];
-}
+  return params.toString();
+};
 
 export async function getProjects(
   filters: ProjectFilters = {}
-): Promise<Project[]> {
-  const res = await fetch("https://explorer-data.web3privacy.info/");
+): Promise<GETProjectsResponse> {
+  const queryString = createParams(filters);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  if (!res.ok) throw new Error("Error fetching projects");
+  const res = await fetch(`${baseUrl}/api/projects?${queryString}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch projects: ${res.statusText}`);
+  }
 
-  const data = await res.json();
-
-  return processData(data.projects, filters);
+  return res.json();
 }
