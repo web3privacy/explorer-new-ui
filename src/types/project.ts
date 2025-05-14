@@ -174,7 +174,7 @@ export interface ProjectRatingItem {
   label: string;
   positive: string;
   negative: string;
-  value: any;
+  value: number;
 }
 
 export interface ProjectFilters {
