@@ -38,9 +38,7 @@ export async function ProjectsList({
   }
 
   return (
-    <div className="min-h-screen p-8 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">🛠 Projects</h1>
-
+    <div>
       <div className="flex gap-2">
         <p className="text-sm text-muted-foreground mb-4">
           {data?.pagination?.total} projects found
