@@ -1,3 +1,4 @@
+import { API_RESPONSE_KEYS, API_URLS } from "@/lib/constants";
 import { processProjects } from "@/lib/processProjects";
 import { Project } from "@/types";
 import {
@@ -11,7 +12,7 @@ import { createLoader } from "nuqs/server";
 const loadSearchParams = createLoader(projectsSearchParams);
 
 type ProjectsResponse = {
-  projects?: Project[];
+  [API_RESPONSE_KEYS.PROJECTS]?: Project[];
   pagination?: {
     page: number;
     pageSize: number;
@@ -44,13 +45,16 @@ export async function GET(
   const filters = filtersResult.data;
 
   try {
-    const res = await fetch("https://explorer-data.web3privacy.info/");
+    const res = await fetch(API_URLS.EXPLORER_DATA);
     const allProjects = await res.json();
 
-    const { total, paginated } = processProjects(allProjects.projects, filters);
+    const { total, paginated } = processProjects(
+      allProjects[API_RESPONSE_KEYS.PROJECTS],
+      filters
+    );
 
     return NextResponse.json({
-      projects: paginated,
+      [API_RESPONSE_KEYS.PROJECTS]: paginated,
       pagination: {
         page: filters.page!,
         pageSize: filters.pageSize!,

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Geist_Mono } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 
 const archivoSans = Archivo({
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${archivoSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
       </body>
     </html>
   );

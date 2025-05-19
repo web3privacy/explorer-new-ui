@@ -3,7 +3,7 @@ import EcosystemFilter from "./EcosystemFilter";
 
 const ProjectsFilters: React.FC = () => {
   return (
-    <div>
+    <div className="flex gap-2">
       <EcosystemFilter />
     </div>
   );
