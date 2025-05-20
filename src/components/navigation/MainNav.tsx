@@ -15,7 +15,7 @@ const menuItems = [
 
 export function MainNav({ className, isMobile }: MainNavProps) {
   return (
-    <nav className={cn("flex gap-6", className)}>
+    <nav className={cn("flex items-center gap-6 w-full", className)}>
       {!isMobile && (
         <Link href="/" className="flex items-center space-x-2 mr-4">
           <span className="font-bold inline-block text-lg">Web3Privacy</span>
@@ -27,10 +27,10 @@ export function MainNav({ className, isMobile }: MainNavProps) {
           key={item.href}
           href={item.href}
           className={cn(
-            "transition-colors hover:text-foreground/80 text-foreground/60",
+            "transition-colors hover:text-foreground/80 text-foreground/60 flex items-center",
             isMobile
               ? "text-base font-medium px-2 py-1 -ml-2 rounded-md hover:bg-foreground/5"
-              : "text-sm"
+              : "text-sm h-16"
           )}
         >
           {item.text}

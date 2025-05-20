@@ -25,8 +25,8 @@ export async function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="h-full">
       <CardHeader>
-        <div className="flex items-start gap-4">
-          <Avatar className="mt-1">
+        <div className="flex items-center gap-4">
+          <Avatar className="mt-1 size-10">
             <AvatarImage
               src={project.logos ? project.logos[0].url : ""}
               alt={project.name}
@@ -35,6 +35,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
               {project.name[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
+
           <div className="space-y-2 w-full">
             <CardTitle>{project.name}</CardTitle>
             {project.categories && project.categories.length > 0 && (

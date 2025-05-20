@@ -175,34 +175,31 @@ const MultipleSelector = React.forwardRef<
   HTMLDivElement,
   MultipleSelectorProps
 >(
-  (
-    {
-      value,
-      onChange,
-      placeholder,
-      defaultOptions: arrayDefaultOptions = [],
-      options: arrayOptions,
-      delay,
-      onSearch,
-      onSearchSync,
-      loadingIndicator,
-      emptyIndicator,
-      maxSelected = Number.MAX_SAFE_INTEGER,
-      onMaxSelected,
-      hidePlaceholderWhenSelected,
-      disabled,
-      groupBy,
-      className,
-      badgeClassName,
-      selectFirstItem = true,
-      creatable = false,
-      triggerSearchOnFocus = false,
-      commandProps,
-      inputProps,
-      hideClearAllButton = false,
-    },
-    ref
-  ) => {
+  ({
+    value,
+    onChange,
+    placeholder,
+    defaultOptions: arrayDefaultOptions = [],
+    options: arrayOptions,
+    delay,
+    onSearch,
+    onSearchSync,
+    loadingIndicator,
+    emptyIndicator,
+    maxSelected = Number.MAX_SAFE_INTEGER,
+    onMaxSelected,
+    hidePlaceholderWhenSelected,
+    disabled,
+    groupBy,
+    className,
+    badgeClassName,
+    selectFirstItem = true,
+    creatable = false,
+    triggerSearchOnFocus = false,
+    commandProps,
+    inputProps,
+    hideClearAllButton = false,
+  }) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [open, setOpen] = React.useState(false);
     const [onScrollbar, setOnScrollbar] = React.useState(false);
@@ -605,9 +602,12 @@ const MultipleSelector = React.forwardRef<
                               setSelected(newOptions);
                               onChange?.(newOptions);
                             }}
-                            className={cn("flex items-center gap-2 cursor-pointer", {
-                              "opacity-50": option.disable
-                            })}
+                            className={cn(
+                              "flex items-center gap-2 cursor-pointer",
+                              {
+                                "opacity-50": option.disable,
+                              }
+                            )}
                           >
                             {option.icon && (
                               <Avatar className="h-6 w-6">
