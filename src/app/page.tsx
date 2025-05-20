@@ -8,7 +8,7 @@ type PageProps = {
 };
 
 export default async function Home({ searchParams }: PageProps) {
-  const searchParamsKey = JSON.stringify(searchParams);
+  const searchParamsKey = JSON.stringify(await searchParams);
   return (
     <div className="container px-4 md:px-6 lg:px-8">
       <div className="space-y-8">

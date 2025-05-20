@@ -33,3 +33,15 @@ export async function getProjects(
 
   return res.json();
 }
+
+export async function getProject(id: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(`${baseUrl}/api/projects/${id}`);
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Failed to fetch project");
+  }
+
+  return data.project;
+}
