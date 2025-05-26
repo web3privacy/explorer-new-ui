@@ -8,9 +8,12 @@ interface MainNavProps {
 }
 
 const menuItems = [
-  { text: "Projects", href: "/" },
-  { text: "Ecosystems", href: "/ecosystems" },
-  { text: "About", href: "/about" },
+  { text: "About", href: "https://hackmd.io/@m-f-/HJZ3aZSekl" },
+  {
+    text: "Scoring",
+    href: "https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/s9flkE6tMaJ4f2tzWu-FmDy7Zx_TRPe3jdXr2iYmYH0",
+  },
+  { text: "Contribute", href: "https://github.com/web3privacy/explorer-data" },
 ];
 
 export function MainNav({ className, isMobile }: MainNavProps) {
