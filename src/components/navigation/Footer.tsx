@@ -19,9 +19,13 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-base">Resources</h3>
               <ul className="space-y-3">
-                {["Documentation", "Blog", "Privacy Policy"].map((item) => (
+                {[
+                  "Manifiesto",
+                  "Events",
+                  "Privacy Explorer",
+                  "How to get involved",
+                ].map((item) => (
                   <li key={item}>
                     <Link
                       href="#"
@@ -35,9 +39,13 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-base">Community</h3>
               <ul className="space-y-3">
-                {["Discord", "Twitter", "GitHub"].map((item) => (
+                {[
+                  "Articles",
+                  "Privacy database",
+                  "Grants/Support Us",
+                  "Talks",
+                ].map((item) => (
                   <li key={item}>
                     <Link
                       href="#"
