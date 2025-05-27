@@ -1,3 +1,4 @@
+//import { CategoryTabs } from "@/components/navigation/CategoryTabs";
 import ProjectsFilters from "@/components/projects/ProjectsFilters";
 import { ProjectsList } from "@/components/projects/ProjectsList";
 import { SearchParams } from "nuqs/server";
@@ -13,7 +14,7 @@ export default async function Home({ searchParams }: PageProps) {
     <div className="container px-4 md:px-6 lg:px-8">
       <div className="space-y-8">
         <ProjectsFilters />
-
+        {/* <CategoryTabs /> */}
         <Suspense key={searchParamsKey} fallback={ProjectsList.fallback()}>
           <ProjectsList searchParams={searchParams} />
         </Suspense>
