@@ -19,19 +19,29 @@ export function Footer() {
             </div>
 
             <div>
+              {" "}
               <ul className="space-y-3">
                 {[
-                  "Manifiesto",
-                  "Events",
-                  "Privacy Explorer",
-                  "How to get involved",
+                  {
+                    label: "Manifiesto",
+                    href: "https://docs.web3privacy.info/about-us/manifesto/",
+                  },
+                  { label: "Events", href: "https://web3privacy.info/events/" },
+                  {
+                    label: "Privacy Explorer",
+                    href: "https://docs.web3privacy.info/projects/privacy-explorer/",
+                  },
+                  {
+                    label: "How to get involved",
+                    href: "https://docs.web3privacy.info/get-involved/",
+                  },
                 ].map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <Link
-                      href="#"
+                      href={item.href}
                       className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
@@ -39,19 +49,32 @@ export function Footer() {
             </div>
 
             <div>
+              {" "}
               <ul className="space-y-3">
                 {[
-                  "Articles",
-                  "Privacy database",
-                  "Grants/Support Us",
-                  "Talks",
+                  {
+                    label: "Articles",
+                    href: "https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073",
+                  },
+                  {
+                    label: "Privacy database",
+                    href: "https://github.com/web3privacy/web3privacy",
+                  },
+                  {
+                    label: "Grants/Support Us",
+                    href: "https://github.com/web3privacy/grants",
+                  },
+                  {
+                    label: "Talks",
+                    href: "https://docs.web3privacy.info/events/",
+                  },
                 ].map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <Link
-                      href="#"
+                      href={item.href}
                       className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
