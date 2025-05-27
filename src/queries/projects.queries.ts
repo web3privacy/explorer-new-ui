@@ -11,6 +11,9 @@ export const createParams = (filters: ProjectFilters): string => {
   if (filters.ecosystems) {
     filters.ecosystems.forEach((eco) => params.append("ecosystems", eco));
   }
+  if (filters.usecases) {
+    filters.usecases.forEach((usecase) => params.append("usecases", usecase));
+  }
 
   if (filters.sortBy) params.set("sortBy", filters.sortBy);
   if (filters.sortOrder) params.set("sortOrder", filters.sortOrder);

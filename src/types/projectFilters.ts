@@ -16,6 +16,7 @@ export const ProjectFiltersSchema = z
   .object({
     categories: z.array(z.string()).optional(),
     ecosystems: z.array(z.string()).optional(),
+    usecases: z.array(z.string()).optional(),
     sortBy: z.enum(SORT_BY_OPTIONS).optional(),
     sortOrder: z.enum(SORT_ORDER_OPTIONS).optional(),
     page: z.number().optional(),
@@ -28,6 +29,7 @@ export type ProjectFilters = z.infer<typeof ProjectFiltersSchema>;
 export const projectsSearchParams = {
   categories: parseAsArrayOf(parseAsString).withDefault([]),
   ecosystems: parseAsArrayOf(parseAsString).withDefault([]),
+  usecases: parseAsArrayOf(parseAsString).withDefault([]),
   sortBy: parseAsStringEnum([...SORT_BY_OPTIONS]).withDefault(
     [...SORT_BY_OPTIONS][0]
   ),

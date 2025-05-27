@@ -12,6 +12,7 @@ export function processProjects(
   const {
     categories,
     ecosystems,
+    usecases,
     sortBy,
     sortOrder = "asc",
     page = 1,
@@ -30,7 +31,11 @@ export function processProjects(
       ? _.some(project.ecosystem, (eco) => ecosystems.includes(eco))
       : true;
 
-    return categoryMatch && ecosystemMatch;
+    const usecaseMatch = usecases?.length
+      ? _.some(project.usecases, (uc) => usecases.includes(uc))
+      : true;
+
+    return categoryMatch && ecosystemMatch && usecaseMatch;
   });
 
   // SORTING
