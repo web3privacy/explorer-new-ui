@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { SocialIcons } from "./SocialIcons";
 
@@ -20,8 +21,25 @@ export function MainNav({ className, isMobile }: MainNavProps) {
   return (
     <nav className={cn("flex items-center gap-6 w-full", className)}>
       {!isMobile && (
-        <Link href="/" className="flex items-center space-x-2 mr-4">
-          <span className="font-bold inline-block text-lg">Web3Privacy</span>
+        <Link href="/" className="flex items-center space-x-4">
+          <div className="flex items-center gap-2">
+            <Image
+              src="/web3privacy_eye.webp"
+              alt="Web3Privacy Eye"
+              className="w-auto h-8 md:h-10 lg:h-12"
+              width={48}
+              height={48}
+              priority
+            />
+            <Image
+              src="/explorer.webp"
+              alt="Explorer Logo"
+              className="w-auto h-4 md:h-5 lg:h-6"
+              width={120}
+              height={24}
+              priority
+            />
+          </div>
         </Link>
       )}
 
@@ -30,7 +48,7 @@ export function MainNav({ className, isMobile }: MainNavProps) {
           key={item.href}
           href={item.href}
           className={cn(
-            "transition-colors hover:text-foreground/80 text-foreground/60 flex items-center",
+            "hidden lg:flex transition-colors hover:text-foreground/80 text-foreground/60 items-center", // Added hidden lg:flex
             isMobile
               ? "text-base font-medium px-2 py-1 -ml-2 rounded-md hover:bg-foreground/5"
               : "text-sm h-16"

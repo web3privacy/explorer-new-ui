@@ -16,7 +16,7 @@ export function Header() {
               href="https://explorer.web3privacy.info/project/create"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-0 rounded-md text-sm font-medium transition-colors"
+              className="hidden md:flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-0 rounded-md text-sm font-medium transition-colors"
             >
               <CirclePlus className="h-4 w-4" />
               <span>Add Project</span>
