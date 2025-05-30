@@ -1,6 +1,5 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -39,7 +38,6 @@ export default function UsecaseFilter() {
 
   return (
     <div className="*:not-first:mt-2">
-      <Label>Use Cases:</Label>
       <Select
         value={selectedUsecase?.[0] || ""}
         onValueChange={(value) => setSelectedUsecase(value ? [value] : [])}

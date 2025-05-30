@@ -1,7 +1,6 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -41,7 +40,6 @@ export default function EcosystemFilter() {
 
   return (
     <div className="*:not-first:mt-2">
-      <Label>Ecosystems:</Label>
       <Select
         value={selectedEcosystem?.[0] || ""}
         onValueChange={(value) => setSelectedEcosystem(value ? [value] : [])}

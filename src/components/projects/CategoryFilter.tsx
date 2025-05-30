@@ -1,6 +1,5 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -28,7 +27,6 @@ export default function CategoryFilter() {
 
   return (
     <div className="*:not-first:mt-2">
-      <Label>Categories:</Label>
       <Select
         value={selectedCategory?.[0] || ""}
         onValueChange={(value) =>
