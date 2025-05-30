@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -8,9 +9,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold inline-block text-lg">
-                  Web3Privacy
-                </span>
+                <Image
+                  src="/logo.svg"
+                  alt="Web3Privacy Now"
+                  width={177}
+                  height={48}
+                  className="h-8 w-auto"
+                  priority
+                />
               </Link>
               <p className="mt-4 text-sm text-foreground/60 max-w-xs leading-relaxed">
                 Exploring and showcasing privacy-focused projects in the Web3
