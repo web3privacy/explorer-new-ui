@@ -5,5 +5,6 @@ export const API_URLS = {
 export const API_RESPONSE_KEYS = {
   PROJECTS: "projects",
   ECOSYSTEMS: "ecosystems",
+  CATEGORIES: "categories",
   USECASES: "usecases",
 } as const;
