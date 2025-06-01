@@ -3,6 +3,7 @@ import {
   ProjectFiltersSchema,
   projectsSearchParams,
 } from "@/types/projectFilters";
+import Link from "next/link";
 import { createLoader, SearchParams } from "nuqs/server";
 import { ProjectCard } from "./ProjectCard";
 
@@ -38,6 +39,19 @@ export async function ProjectsList({
     );
   }
 
+  // ✅ Parte 1: lógica
+  const totalPages = Math.ceil(
+    (data.pagination?.total || 0) / (data.pagination?.pageSize || 1)
+  );
+  const currentPage = data.pagination?.page || 1;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function buildPageUrl(currentParams: Record<string, any>, newPage: number) {
+    const params = new URLSearchParams(currentParams as Record<string, string>);
+    params.set("page", newPage.toString());
+    return `?${params.toString()}`;
+  }
+
   return (
     <div>
       <div className="flex gap-2">
@@ -67,6 +81,24 @@ export async function ProjectsList({
           </li>
         ))}
       </ul>
+      <div className="flex justify-center gap-4 mt-8">
+        {currentPage > 1 && (
+          <Link
+            href={buildPageUrl(params, currentPage - 1)}
+            className="px-4 py-2 bg-muted rounded hover:bg-muted/80"
+          >
+            ← Previous
+          </Link>
+        )}
+        {currentPage < totalPages && (
+          <Link
+            href={buildPageUrl(params, currentPage + 1)}
+            className="px-4 py-2 bg-muted rounded hover:bg-muted/80"
+          >
+            Next →
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
