@@ -39,7 +39,6 @@ export async function ProjectsList({
     );
   }
 
-  // ✅ Parte 1: lógica
   const totalPages = Math.ceil(
     (data.pagination?.total || 0) / (data.pagination?.pageSize || 1)
   );
