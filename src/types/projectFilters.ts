@@ -21,6 +21,7 @@ export const ProjectFiltersSchema = z
     sortOrder: z.enum(SORT_ORDER_OPTIONS).optional(),
     page: z.number().optional(),
     pageSize: z.number().optional(),
+    q: z.string().optional(),
   })
   .strict();
 
@@ -37,5 +38,6 @@ export const projectsSearchParams = {
     [...SORT_ORDER_OPTIONS][0]
   ),
   page: parseAsInteger.withDefault(1),
-  pageSize: parseAsInteger.withDefault(30),
+  pageSize: parseAsInteger.withDefault(50),
+  q: parseAsString.withDefault(""),
 };

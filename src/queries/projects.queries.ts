@@ -19,7 +19,7 @@ export const createParams = (filters: ProjectFilters): string => {
   if (filters.sortOrder) params.set("sortOrder", filters.sortOrder);
   if (filters.page) params.set("page", filters.page.toString());
   if (filters.pageSize) params.set("pageSize", filters.pageSize.toString());
-
+  if (filters.q) params.set("q", filters.q);
   return params.toString();
 };
 

@@ -17,9 +17,24 @@ export function processProjects(
     sortOrder = "asc",
     page = 1,
     pageSize = 20,
+    q,
   } = filters;
 
   let result = projects;
+
+  // 🔍 TEXT SEARCH FILTER
+  if (q && q.trim() !== "") {
+    const lowerQ = q.toLowerCase();
+    result = result.filter((project) => {
+      return (
+        project.name.toLowerCase().includes(lowerQ) ||
+        project.description?.toLowerCase().includes(lowerQ) ||
+        project.categories?.some((cat) => cat.toLowerCase().includes(lowerQ)) ||
+        project.ecosystem?.some((eco) => eco.toLowerCase().includes(lowerQ)) ||
+        project.usecases?.some((uc) => uc.toLowerCase().includes(lowerQ))
+      );
+    });
+  }
 
   // FILTERING
   result = _.filter(result, (project) => {
