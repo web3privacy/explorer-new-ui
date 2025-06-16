@@ -40,16 +40,34 @@ export async function ProjectCard({ project }: ProjectCardProps) {
             <div className="space-y-2 w-full">
               <CardTitle>{project.name}</CardTitle>
               {project.categories && project.categories.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {project.categories.map((category, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="text-[10px]"
-                    >
-                      {category}
-                    </Badge>
-                  ))}
+                <div className="space-y-1">
+                  <div className="flex flex-wrap gap-1">
+                    {project.categories.map((category, index) => (
+                      <Badge
+                        key={index}
+                        variant="secondary"
+                        className="text-[10px]"
+                      >
+                        {category}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-1">
+                    {project.usecases && project.usecases.length > 0 && (
+                      <>
+                        {project.usecases.map((usecase, index) => (
+                          <Badge
+                            key={index}
+                            variant="outline"
+                            className="text-[10px]"
+                          >
+                            {usecase}
+                          </Badge>
+                        ))}
+                      </>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
