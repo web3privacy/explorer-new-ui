@@ -39,37 +39,6 @@ export async function ProjectCard({ project }: ProjectCardProps) {
 
             <div className="space-y-2 w-full">
               <CardTitle>{project.name}</CardTitle>
-              {project.categories && project.categories.length > 0 && (
-                <div className="space-y-1">
-                  <div className="flex flex-wrap gap-1">
-                    {project.categories.map((category, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="text-[10px]"
-                      >
-                        {category}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-1">
-                    {project.usecases && project.usecases.length > 0 && (
-                      <>
-                        {project.usecases.map((usecase, index) => (
-                          <Badge
-                            key={index}
-                            variant="outline"
-                            className="text-[10px]"
-                          >
-                            {usecase}
-                          </Badge>
-                        ))}
-                      </>
-                    )}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </CardHeader>
@@ -77,32 +46,68 @@ export async function ProjectCard({ project }: ProjectCardProps) {
           <CardDescription className="line-clamp-2">
             {project.description || "No description available"}
           </CardDescription>
+          <div className="flex flex-wrap gap-1 mt-2">
+            {/* Ecosystems */}
+            {project.ecosystem && project.ecosystem.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Ecosystems</p>
+                <div className="flex -space-x-[0.4rem]">
+                  {project.ecosystem.map((eco, index) => {
+                    const icon = getEcosystemIcon(eco);
+                    return (
+                      <Avatar
+                        key={index}
+                        className="size-6 border-2 border-card bg-white"
+                      >
+                        <AvatarImage
+                          src={icon}
+                          alt={eco}
+                          className="object-contain bg-white"
+                        />
+                        <AvatarFallback className="bg-secondary/50 text-secondary-foreground text-xs">
+                          {eco[0].toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                    );
+                  })}
 
-          {project.ecosystem && project.ecosystem.length > 0 && (
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Ecosystems</p>
-              <div className="flex -space-x-[0.4rem]">
-                {project.ecosystem.map((eco, index) => {
-                  const icon = getEcosystemIcon(eco);
-                  return (
-                    <Avatar
-                      key={index}
-                      className="size-6 border-2 border-card bg-white"
-                    >
-                      <AvatarImage
-                        src={icon}
-                        alt={eco}
-                        className="object-contain bg-white"
-                      />
-                      <AvatarFallback className="bg-secondary/50 text-secondary-foreground text-xs">
-                        {eco[0].toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                  );
-                })}
+                  {project.categories && project.categories.length > 0 && (
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap gap-1">
+                        {/* Categories */}
+                        {project.categories.map((category, index) => (
+                          <Badge
+                            key={index}
+                            variant="secondary"
+                            className="text-[10px]"
+                          >
+                            {category}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <div className="flex flex-wrap gap-1">
+                        {/* Usecases */}
+                        {project.usecases && project.usecases.length > 0 && (
+                          <>
+                            {project.usecases.map((usecase, index) => (
+                              <Badge
+                                key={index}
+                                variant="outline"
+                                className="text-[10px]"
+                              >
+                                {usecase}
+                              </Badge>
+                            ))}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </CardContent>
       </Card>
     </Link>
