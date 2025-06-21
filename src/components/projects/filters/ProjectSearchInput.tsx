@@ -6,7 +6,7 @@ export function ProjectSearchInput() {
   const [query] = useQueryState("q");
 
   return (
-    <form method="GET" className="w-full max-w-md mx-auto mb-6">
+    <form method="GET" className="w-full">
       <input
         type="text"
         name="q"
