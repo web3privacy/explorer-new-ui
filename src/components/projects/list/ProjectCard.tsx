@@ -10,6 +10,7 @@ import {
 import { getEcosystems } from "@/queries/ecosystems.queries";
 import { Project } from "@/types/project";
 import Link from "next/link";
+import { ProjectRating } from "../detail/ProjectRating";
 
 interface ProjectCardProps {
   project: Project;
@@ -22,23 +23,26 @@ export async function ProjectCard({ project }: ProjectCardProps) {
     const ecosystem = ecosystems.find((eco) => eco.id === ecosystemId);
     return ecosystem?.icon;
   };
+
   return (
     <Link href={`/project/${project.id}`} className="block h-full">
       <Card className="h-full transition-colors hover:bg-accent/50 hover:shadow-md">
         <CardHeader>
-          <div className="flex items-center gap-4">
-            <Avatar className="mt-1 size-10">
-              <AvatarImage
-                src={project.logos ? project.logos[0].url : ""}
-                alt={project.name}
-              />
-              <AvatarFallback className="bg-primary/10 text-primary">
-                {project.name[0].toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
-
-            <div className="space-y-2 w-full">
-              <CardTitle>{project.name}</CardTitle>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-1 items-center gap-4 overflow-hidden">
+              <Avatar className="mt-1 size-10 flex-shrink-0">
+                <AvatarImage
+                  src={project.logos ? project.logos[0].url : ""}
+                  alt={project.name}
+                />
+                <AvatarFallback className="bg-primary/10 text-primary">
+                  {project.name[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <CardTitle className="truncate">{project.name}</CardTitle>
+            </div>
+            <div className="flex-shrink-0">
+              <ProjectRating project={project} />
             </div>
           </div>
         </CardHeader>

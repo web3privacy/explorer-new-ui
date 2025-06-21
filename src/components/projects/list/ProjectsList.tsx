@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import { getProjects } from "@/queries/projects.queries";
 import {
   ProjectFiltersSchema,
@@ -101,8 +102,6 @@ export async function ProjectsList({
     </div>
   );
 }
-
-import { Skeleton } from "@/components/ui/skeleton";
 
 const PROJECTS_PER_PAGE = 6;
 const CATEGORIES_PER_PROJECT = 2;

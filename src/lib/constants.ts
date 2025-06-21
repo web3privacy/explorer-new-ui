@@ -7,4 +7,5 @@ export const API_RESPONSE_KEYS = {
   ECOSYSTEMS: "ecosystems",
   CATEGORIES: "categories",
   USECASES: "usecases",
+  RANKS: "ranks",
 } as const;

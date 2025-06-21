@@ -1,6 +1,6 @@
 //import { CategoryTabs } from "@/components/navigation/CategoryTabs";
-import ProjectsFilters from "@/components/projects/ProjectsFilters";
-import { ProjectsList } from "@/components/projects/ProjectsList";
+import ProjectsFilters from "@/components/projects/filters/ProjectsFilters";
+import { ProjectsList } from "@/components/projects/list/ProjectsList";
 import { SearchParams } from "nuqs/server";
 import { Suspense } from "react";
 
