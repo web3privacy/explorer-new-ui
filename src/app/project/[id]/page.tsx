@@ -1,7 +1,14 @@
 import { ProjectHeader } from "@/components/projects/detail/ProjectHeader";
+import { ProjectHistory } from "@/components/projects/detail/ProjectHistory";
+import { ProjectOpenness } from "@/components/projects/detail/ProjectOpenness";
+import { ProjectPrivacy } from "@/components/projects/detail/ProjectPrivacy";
+import { ProjectSecurity } from "@/components/projects/detail/ProjectSecurity";
 import { ProjectStats } from "@/components/projects/detail/ProjectStats";
+import { ProjectTechnology } from "@/components/projects/detail/ProjectTechnology";
+import { TableOfContents } from "@/components/ui/inline-toc";
 import { getEcosystems } from "@/queries/ecosystems.queries";
 import { getProject } from "@/queries/projects.queries";
+import { Clock, Cpu, Eye, Lock, Shield } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -31,13 +38,45 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     getEcosystems(),
   ]);
 
+  const tocItems = [
+    { title: "Openness", url: "#openness", depth: 1, icon: Eye },
+    { title: "Technology", url: "#technology", depth: 1, icon: Cpu },
+    { title: "Privacy", url: "#privacy", depth: 1, icon: Shield },
+    { title: "Security", url: "#security", depth: 1, icon: Lock },
+    { title: "History", url: "#history", depth: 1, icon: Clock },
+  ];
+
   return (
-    <div className="container px-4 md:px-6 lg:px-8 py-6 md:py-8 space-y-8">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 bg-muted/20 p-6 border rounded-xl">
+    <div className="container px-4 md:px-6 lg:px-8 py-6 md:py-8">
+      {/* Header Section - Full Width */}
+      <div className="flex flex-col md:flex-row justify-between items-start gap-8 bg-muted/20 p-6 border rounded-xl mb-8">
         <ProjectHeader project={project} />
         <ProjectStats project={project} ecosystems={ecosystems} />
       </div>
-      {/* Other page content can go here */}
+
+      {/* Main Content Layout */}
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Table of Contents - Left Side, Pinned */}
+        <div className="lg:w-80 lg:flex-shrink-0">
+          <div className="lg:sticky lg:top-8">
+            <TableOfContents
+              items={tocItems}
+              title="Page Contents"
+              className="w-full"
+              defaultOpen={true}
+            />
+          </div>
+        </div>
+
+        {/* Content Sections - Right Side */}
+        <div className="flex-1 space-y-12">
+          <ProjectOpenness project={project} />
+          <ProjectTechnology project={project} />
+          <ProjectPrivacy project={project} />
+          <ProjectSecurity project={project} />
+          <ProjectHistory project={project} />
+        </div>
+      </div>
     </div>
   );
 }
