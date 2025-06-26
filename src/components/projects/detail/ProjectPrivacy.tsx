@@ -14,7 +14,7 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
       </div>
       <div className="prose prose-lg max-w-none">
         <p className="text-muted-foreground mb-4">
-          Privacy is at the core of {project.name}'s design philosophy. We
+          Privacy is at the core of {project.name}&apos;s design philosophy. We
           implement zero-knowledge proofs, differential privacy, and other
           advanced techniques to ensure user data remains protected while
           maintaining functionality.
