@@ -90,7 +90,11 @@ export function Footer() {
 
           <div className="mt-12 pt-8 border-t text-center text-sm text-foreground/60">
             <p>
-              © {new Date().getFullYear()} Web3Privacy. All rights reserved.
+              Built with ❤️ by the{" "}
+              <a href="https://web3privacy.info/about/" target="_blank">
+                Web3Privacy
+              </a>{" "}
+              team
             </p>
           </div>
         </div>
