@@ -24,12 +24,12 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
 
           <div className="space-y-4">
             {/* Default Privacy */}
-            {project.default_privacy !== undefined && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Shield className="h-4 w-4" />
-                  Default Privacy
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                Default Privacy
+              </h4>
+              {project.default_privacy !== undefined ? (
                 <div className="flex items-center gap-2">
                   {project.default_privacy ? (
                     <>
@@ -47,88 +47,49 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
                     </>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
 
             {/* Know Your Customer (KYC) */}
-            {project.tracebility?.kyc !== undefined && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <UserCheck className="h-4 w-4" />
-                  Know Your Customer (KYC)
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <UserCheck className="h-4 w-4" />
+                Know Your Customer (KYC)
+              </h4>
+              {project.tracebility?.kyc !== undefined ? (
                 <div className="flex items-center gap-2">
                   {project.tracebility.kyc ? (
                     <>
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-sm text-green-600">Required</span>
+                      <Check className="h-4 w-4 text-red-500" />
+                      <span className="text-sm text-red-600">Required</span>
                     </>
                   ) : (
                     <>
-                      <X className="h-4 w-4 text-red-500" />
-                      <span className="text-sm text-red-600">Not Required</span>
+                      <X className="h-4 w-4 text-green-500" />
+                      <span className="text-sm text-green-600">
+                        Not Required
+                      </span>
                     </>
                   )}
                 </div>
-              </div>
-            )}
-
-            {/* Compliance */}
-            {project.compliance && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" />
-                  Compliance
-                </h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.compliance}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
                 </p>
-              </div>
-            )}
-
-            {/* Sign-in Requirements */}
-            {project.tracebility?.sign_in_type_requirments &&
-              project.tracebility.sign_in_type_requirments.length > 0 && (
-                <div className="bg-card p-4 rounded-lg border">
-                  <h4 className="font-medium mb-2 flex items-center gap-2">
-                    <LogIn className="h-4 w-4" />
-                    Sign-in Requirements
-                  </h4>
-                  <div className="space-y-1">
-                    {project.tracebility.sign_in_type_requirments.map(
-                      (requirement, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-2 text-sm text-muted-foreground"
-                        >
-                          <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                          {requirement}
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
               )}
+            </div>
 
-            {/* Collected Data */}
-            {project.tracebility?.tracked_data && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Database className="h-4 w-4" />
-                  Collected Data
-                </h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.tracebility.tracked_data}
-                </p>
-              </div>
-            )}
-            {/* Privacy Policy Status */}
-            {project.privacy_policy && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  Privacy Policy Status
-                </h4>
+            {/* Privacy Policy */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Privacy Policy
+              </h4>
+              {project.privacy_policy ? (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     {project.privacy_policy.defined ? (
@@ -161,18 +122,88 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
                     </div>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
+
+            {/* Compliance */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <CheckCircle className="h-4 w-4" />
+                Compliance with
+              </h4>
+              {project.compliance ? (
+                <p className="text-muted-foreground text-sm">
+                  {project.compliance}
+                </p>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
+
+            {/* Sign-in Requirements */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <LogIn className="h-4 w-4" />
+                Sign-in Requirements
+              </h4>
+              {project.tracebility?.sign_in_type_requirments &&
+              project.tracebility.sign_in_type_requirments.length > 0 ? (
+                <div className="space-y-1">
+                  {project.tracebility.sign_in_type_requirments.map(
+                    (requirement, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                        {requirement}
+                      </div>
+                    )
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
+
+            {/* Collected Data */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Database className="h-4 w-4" />
+                Collected Data
+              </h4>
+              {project.tracebility?.tracked_data ? (
+                <p className="text-muted-foreground text-sm">
+                  {project.tracebility.tracked_data}
+                </p>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
 
             {/* Data Usage */}
-            {project.privacy_policy?.data_usage && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Data Usage</h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2">Data Usage</h4>
+              {project.privacy_policy?.data_usage ? (
                 <p className="text-muted-foreground text-sm">
                   {project.privacy_policy.data_usage}
                 </p>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
