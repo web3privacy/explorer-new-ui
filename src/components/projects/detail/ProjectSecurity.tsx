@@ -1,5 +1,5 @@
 import { Project } from "@/types/project";
-import { Lock } from "lucide-react";
+import { Cpu, ExternalLink, Users } from "lucide-react";
 
 interface ProjectSecurityProps {
   project: Project;
@@ -8,79 +8,94 @@ interface ProjectSecurityProps {
 export function ProjectSecurity({ project }: ProjectSecurityProps) {
   return (
     <section id="security" className="scroll-mt-20">
-      <div className="flex items-center gap-3 mb-6">
-        <Lock className="h-6 w-6 text-primary" />
-        <h2 className="text-3xl font-bold">Security</h2>
-      </div>
-      <div className="prose prose-lg max-w-none">
-        <p className="text-muted-foreground mb-4">
-          {project.name} implements enterprise-grade security measures to
-          protect against threats while maintaining the privacy-first approach.
-          Regular security audits and penetration testing ensure continuous
-          improvement.
-        </p>
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
-          <div className="bg-card p-6 rounded-lg border">
-            <h3 className="text-xl font-semibold mb-3">Encryption</h3>
-            <ul className="text-muted-foreground space-y-2">
-              <li>• AES-256 encryption at rest</li>
-              <li>• TLS 1.3 for data in transit</li>
-              <li>• End-to-end encryption for messages</li>
-              <li>• Hardware security modules (HSM)</li>
-            </ul>
-          </div>
-          <div className="bg-card p-6 rounded-lg border">
-            <h3 className="text-xl font-semibold mb-3">Access Control</h3>
-            <ul className="text-muted-foreground space-y-2">
-              <li>• Multi-factor authentication (MFA)</li>
-              <li>• Role-based access control (RBAC)</li>
-              <li>• Just-in-time access provisioning</li>
-              <li>• Continuous session monitoring</li>
-            </ul>
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* Security Dependencies */}
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold mb-4">Security</h3>
+
+          <div className="space-y-4">
+            {/* Technical Dependency */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Cpu className="h-4 w-4" />
+                Technical Dependency
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                {project.technical_spof ||
+                  "No technical dependency information available"}
+              </p>
+            </div>
+
+            {/* Social Dependency */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Social Dependency
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                {project.social_trust ||
+                  "No social dependency information available"}
+              </p>
+            </div>
+
+            {/* Third-party Dependency */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <ExternalLink className="h-4 w-4" />
+                Third-party Dependency
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                {project.third_party_dependency ||
+                  "No third-party dependency information available"}
+              </p>
+            </div>
           </div>
         </div>
-        <div className="bg-card p-6 rounded-lg border mt-6">
-          <h3 className="text-xl font-semibold mb-3">Security Audits</h3>
-          <p className="text-muted-foreground">
-            Regular third-party security audits, bug bounty programs, and
-            automated vulnerability scanning ensure our security posture remains
-            strong. All findings are publicly disclosed and promptly addressed.
-          </p>
-        </div>
-        {project.audits && project.audits.length > 0 && (
-          <div className="bg-card p-6 rounded-lg border mt-6">
-            <h3 className="text-xl font-semibold mb-3">Project Audits</h3>
+
+        {/* Security Audits */}
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold mb-4">Audits</h3>
+
+          {project.audits && project.audits.length > 0 ? (
             <div className="space-y-4">
               {project.audits.map((audit, index) => (
-                <div key={index} className="border-l-4 border-primary pl-4">
-                  <h4 className="font-semibold text-foreground">
-                    {audit.name}
-                  </h4>
-                  {audit.company && (
-                    <p className="text-muted-foreground text-sm">
-                      By {audit.company}
-                    </p>
-                  )}
-                  {audit.time && (
-                    <p className="text-muted-foreground text-sm">
-                      Completed: {audit.time}
-                    </p>
-                  )}
-                  {audit.link && (
-                    <a
-                      href={audit.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline text-sm"
-                    >
-                      View Audit Report
-                    </a>
-                  )}
+                <div key={index} className="bg-card p-4 rounded-lg border">
+                  <h4 className="font-medium mb-2">{audit.name}</h4>
+                  <div className="space-y-2">
+                    {audit.company && (
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-medium">Company:</span>{" "}
+                        {audit.company}
+                      </p>
+                    )}
+                    {audit.time && (
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-medium">Completed:</span>{" "}
+                        {audit.time}
+                      </p>
+                    )}
+                    {audit.link && (
+                      <a
+                        href={audit.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline flex items-center gap-2 text-sm"
+                      >
+                        View Audit Report <span className="text-xs">↗</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="bg-card p-4 rounded-lg border">
+              <p className="text-muted-foreground text-sm">
+                No security audits available for this project.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
