@@ -15,29 +15,26 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
 
           <div className="space-y-4">
             {/* Project Description */}
-            {project.description && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Project Description</h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
-              </div>
-            )}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2">Project Description</h4>
+              <p className="text-muted-foreground text-sm">
+                {project.description || "No project description available"}
+              </p>
+            </div>
 
             {/* Project Phase */}
-            {project.project_phase && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Project Phase</h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.project_phase}
-                </p>
-              </div>
-            )}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2">Project Phase</h4>
+              <p className="text-muted-foreground text-sm">
+                {project.project_phase ||
+                  "No project phase information available"}
+              </p>
+            </div>
 
             {/* Assets Used */}
-            {project.assets_used && project.assets_used.length > 0 && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Assets Used</h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2">Assets Used</h4>
+              {project.assets_used && project.assets_used.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {project.assets_used.map((asset, index) => (
                     <span
@@ -48,14 +45,18 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
                     </span>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-muted-foreground text-sm">
+                  No assets information available
+                </p>
+              )}
+            </div>
 
             {/* Native Token */}
-            {project.tokens && project.tokens.length > 0 && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Native Token</h4>
-                {project.tokens.map((token, index) => (
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2">Native Token</h4>
+              {project.tokens && project.tokens.length > 0 ? (
+                project.tokens.map((token, index) => (
                   <div key={index} className="text-sm text-muted-foreground">
                     {token.name && (
                       <p>
@@ -83,64 +84,72 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
                       </p>
                     )}
                   </div>
-                ))}
-              </div>
-            )}
+                ))
+              ) : (
+                <p className="text-muted-foreground text-sm">
+                  No token information available
+                </p>
+              )}
+            </div>
 
             {/* Project Launch Day */}
-            {project.product_launch_day && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Calendar className="h-4 w-4" />
-                  Project Launch Day
-                </h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.product_launch_day}
-                </p>
-              </div>
-            )}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                Project Launch Day
+              </h4>
+              <p className="text-muted-foreground text-sm">
+                {project.product_launch_day || "No launch date available"}
+              </p>
+            </div>
 
             {/* Team Members */}
-            {project.team && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  Team Members
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Team Members
+              </h4>
+              {project.team?.teammembers &&
+              project.team.teammembers.length > 0 ? (
                 <div className="space-y-2">
-                  {project.team.teammembers &&
-                    project.team.teammembers.map(
-                      (
-                        member: {
-                          name?: string;
-                          role?: string;
-                          link?: string;
-                          [k: string]: unknown;
-                        },
-                        index: number
-                      ) => (
-                        <div
-                          key={index}
-                          className="text-sm text-muted-foreground"
-                        >
-                          <p className="font-medium">{member.name}</p>
-                          {member.role && (
-                            <p className="text-xs">{member.role}</p>
-                          )}
-                        </div>
-                      )
-                    )}
+                  {project.team.teammembers.map(
+                    (
+                      member: {
+                        name?: string;
+                        role?: string;
+                        link?: string;
+                        [k: string]: unknown;
+                      },
+                      index: number
+                    ) => (
+                      <div
+                        key={index}
+                        className="text-sm text-muted-foreground"
+                      >
+                        <p className="font-medium">
+                          {member.name || "Unknown"}
+                        </p>
+                        {member.role && (
+                          <p className="text-xs">{member.role}</p>
+                        )}
+                      </div>
+                    )
+                  )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-muted-foreground text-sm">
+                  No team information available
+                </p>
+              )}
+            </div>
 
             {/* Funding */}
-            {project.funding && project.funding.length > 0 && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <DollarSign className="h-4 w-4" />
-                  Funding
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4" />
+                Funding
+              </h4>
+              {project.funding && project.funding.length > 0 ? (
                 <div className="space-y-2">
                   {project.funding.map((fund, index) => (
                     <div key={index} className="text-sm text-muted-foreground">
@@ -168,8 +177,12 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-muted-foreground text-sm">
+                  No funding information available
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
