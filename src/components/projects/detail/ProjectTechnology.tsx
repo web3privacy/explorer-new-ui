@@ -143,51 +143,6 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
                 </div>
               </div>
             )}
-
-            {/* Additional Blockchain Features */}
-            <div className="bg-card p-4 rounded-lg border">
-              <h4 className="font-medium mb-2">Additional Features</h4>
-              <div className="space-y-2">
-                {project.blockchain_features?.encryption && (
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Encryption:</span>{" "}
-                    {project.blockchain_features.encryption}
-                  </p>
-                )}
-                {project.blockchain_features?.network && (
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Network:</span>{" "}
-                    {project.blockchain_features.network}
-                  </p>
-                )}
-                {project.blockchain_features?.viewing_key !== undefined && (
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Viewing Key:</span>{" "}
-                    {project.blockchain_features.viewing_key
-                      ? "Supported"
-                      : "Not Supported"}
-                  </p>
-                )}
-                {project.blockchain_features?.dissapearing_tx !== undefined && (
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">
-                      Disappearing Transactions:
-                    </span>{" "}
-                    {project.blockchain_features.dissapearing_tx
-                      ? "Supported"
-                      : "Not Supported"}
-                  </p>
-                )}
-                {project.blockchain_features?.connected_tx !== undefined && (
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Connected Transactions:</span>{" "}
-                    {project.blockchain_features.connected_tx
-                      ? "Supported"
-                      : "Not Supported"}
-                  </p>
-                )}
-              </div>
-            </div>
           </div>
         </div>
       </div>
