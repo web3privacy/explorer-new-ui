@@ -20,7 +20,7 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Privacy Settings */}
         <div className="space-y-6">
-          <h3 className="text-2xl font-semibold mb-4">Privacy Settings</h3>
+          <h3 className="text-2xl font-semibold mb-4">Privacy</h3>
 
           <div className="space-y-4">
             {/* Default Privacy */}
@@ -122,14 +122,6 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
                 </p>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Privacy Policy */}
-        <div className="space-y-6">
-          <h3 className="text-2xl font-semibold mb-4">Privacy Policy</h3>
-
-          <div className="space-y-4">
             {/* Privacy Policy Status */}
             {project.privacy_policy && (
               <div className="bg-card p-4 rounded-lg border">
@@ -181,37 +173,12 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
                 </p>
               </div>
             )}
-
-            {/* Third Party Dependencies */}
-            {project.third_party_dependency && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Third Party Dependencies</h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.third_party_dependency}
-                </p>
-              </div>
-            )}
-
-            {/* Social Trust */}
-            {project.social_trust && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Social Trust</h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.social_trust}
-                </p>
-              </div>
-            )}
-
-            {/* Technical Single Point of Failure */}
-            {project.technical_spof && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2">Technical SPOF</h4>
-                <p className="text-muted-foreground text-sm">
-                  {project.technical_spof}
-                </p>
-              </div>
-            )}
           </div>
+        </div>
+
+        {/* Privacy Policy */}
+        <div className="space-y-6">
+          <div className="space-y-4"></div>
         </div>
       </div>
     </section>

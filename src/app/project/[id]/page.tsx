@@ -1,5 +1,4 @@
 import { ProjectHeader } from "@/components/projects/detail/ProjectHeader";
-import { ProjectHistory } from "@/components/projects/detail/ProjectHistory";
 import { ProjectOpenness } from "@/components/projects/detail/ProjectOpenness";
 import { ProjectPrivacy } from "@/components/projects/detail/ProjectPrivacy";
 import { ProjectSecurity } from "@/components/projects/detail/ProjectSecurity";
@@ -8,7 +7,7 @@ import { ProjectTechnology } from "@/components/projects/detail/ProjectTechnolog
 import { TableOfContents } from "@/components/ui/inline-toc";
 import { getEcosystems } from "@/queries/ecosystems.queries";
 import { getProject } from "@/queries/projects.queries";
-import { Clock, Cpu, Eye, Lock, Shield } from "lucide-react";
+import { Cpu, Eye, Lock, Shield } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -21,12 +20,20 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const paramsData = await params;
   const id = paramsData.id;
-  const project = await getProject(id).catch(() => notFound());
 
-  return {
-    title: `${project.name} - Explorer | Web3 Privacy Now`,
-    description: project.description || `Details about ${project.name}`,
-  };
+  try {
+    const project = await getProject(id);
+    return {
+      title: `${project.name} - Web3Privacy Explorer`,
+      description:
+        project.description ||
+        `Learn more about ${project.name} on Web3Privacy Explorer`,
+    };
+  } catch {
+    return {
+      title: "Project Not Found - Web3Privacy Explorer",
+    };
+  }
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
@@ -43,7 +50,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     { title: "Technology", url: "#technology", depth: 1, icon: Cpu },
     { title: "Privacy", url: "#privacy", depth: 1, icon: Shield },
     { title: "Security", url: "#security", depth: 1, icon: Lock },
-    { title: "History", url: "#history", depth: 1, icon: Clock },
   ];
 
   return (
@@ -74,7 +80,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <ProjectTechnology project={project} />
           <ProjectPrivacy project={project} />
           <ProjectSecurity project={project} />
-          <ProjectHistory project={project} />
         </div>
       </div>
     </div>
