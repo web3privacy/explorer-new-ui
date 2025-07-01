@@ -2,6 +2,7 @@ import { Project } from "@/types/project";
 import {
   Check,
   Code,
+  Cpu,
   Database,
   Network,
   Settings,
@@ -24,12 +25,12 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
 
           <div className="space-y-4">
             {/* Open Source */}
-            {project.blockchain_features?.opensource !== undefined && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Code className="h-4 w-4" />
-                  Open Source
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Code className="h-4 w-4" />
+                Open Source
+              </h4>
+              {project.blockchain_features?.opensource !== undefined ? (
                 <div className="flex items-center gap-2">
                   {project.blockchain_features.opensource ? (
                     <>
@@ -43,54 +44,37 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
                     </>
                   )}
                 </div>
-              </div>
-            )}
-
-            {/* Peer to Peer (P2P) */}
-            {project.blockchain_features?.p2p !== undefined && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Network className="h-4 w-4" />
-                  Peer to Peer (P2P)
-                </h4>
-                <div className="flex items-center gap-2">
-                  {project.blockchain_features.p2p ? (
-                    <>
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-sm text-green-600">Supported</span>
-                    </>
-                  ) : (
-                    <>
-                      <X className="h-4 w-4 text-red-500" />
-                      <span className="text-sm text-red-600">
-                        Not Supported
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
 
             {/* Asset Custody */}
-            {project.blockchain_features?.asset_custody_type && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Shield className="h-4 w-4" />
-                  Asset Custody
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                Asset Custody
+              </h4>
+              {project.blockchain_features?.asset_custody_type ? (
                 <p className="text-muted-foreground text-sm">
                   {project.blockchain_features.asset_custody_type}
                 </p>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
 
             {/* Upgradability */}
-            {project.blockchain_features?.upgradability && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Settings className="h-4 w-4" />
-                  Upgradability
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Settings className="h-4 w-4" />
+                Upgradability
+              </h4>
+              {project.blockchain_features?.upgradability ? (
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     {project.blockchain_features.upgradability.enabled ? (
@@ -118,16 +102,66 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
                     </p>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
+
+            {/* Technology Type */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Cpu className="h-4 w-4" />
+                Technology Type
+              </h4>
+              {project.technology?.type ? (
+                <p className="text-muted-foreground text-sm">
+                  {project.technology.type}
+                </p>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
+
+            {/* Peer to Peer (P2P) */}
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Network className="h-4 w-4" />
+                Peer to Peer (P2P)
+              </h4>
+              {project.blockchain_features?.p2p !== undefined ? (
+                <div className="flex items-center gap-2">
+                  {project.blockchain_features.p2p ? (
+                    <>
+                      <Check className="h-4 w-4 text-green-500" />
+                      <span className="text-sm text-green-600">Supported</span>
+                    </>
+                  ) : (
+                    <>
+                      <X className="h-4 w-4 text-red-500" />
+                      <span className="text-sm text-red-600">
+                        Not Supported
+                      </span>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
 
             {/* Decentralized Storage */}
-            {project.storage?.decentralized !== undefined && (
-              <div className="bg-card p-4 rounded-lg border">
-                <h4 className="font-medium mb-2 flex items-center gap-2">
-                  <Database className="h-4 w-4" />
-                  Decentralized Storage
-                </h4>
+            <div className="bg-card p-4 rounded-lg border">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
+                <Database className="h-4 w-4" />
+                Decentralized Storage
+              </h4>
+              {project.storage?.decentralized !== undefined ? (
                 <div className="flex items-center gap-2">
                   {project.storage.decentralized ? (
                     <>
@@ -141,8 +175,12 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
                     </>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No data available
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
