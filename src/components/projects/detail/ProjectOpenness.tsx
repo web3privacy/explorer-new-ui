@@ -127,7 +127,18 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
                         className="text-sm text-muted-foreground"
                       >
                         <p className="font-medium">
-                          {member.name || "Unknown"}
+                          {member.link ? (
+                            <a
+                              href={member.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-primary transition-colors"
+                            >
+                              {member.name || "Unknown"}
+                            </a>
+                          ) : (
+                            member.name || "Unknown"
+                          )}
                         </p>
                         {member.role && (
                           <p className="text-xs">{member.role}</p>
@@ -155,7 +166,19 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
                     <div key={index} className="text-sm text-muted-foreground">
                       {fund.name && (
                         <p>
-                          <span className="font-medium">Name:</span> {fund.name}
+                          <span className="font-medium">Name:</span>{" "}
+                          {fund.link ? (
+                            <a
+                              href={fund.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-primary transition-colors"
+                            >
+                              {fund.name}
+                            </a>
+                          ) : (
+                            fund.name
+                          )}
                         </p>
                       )}
                       {fund.value && (
