@@ -45,17 +45,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   return (
     <div className="container px-4 md:px-6 lg:px-8 py-6 md:py-8">
-      {/* Header Section - Full Width */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-8 bg-muted/20 p-6 border rounded-xl mb-8">
         <ProjectHeader project={project} />
         <ProjectStats project={project} ecosystems={ecosystems} />
       </div>
 
-      {/* Main Content Layout */}
       <div className="space-y-8">
         <ProjectOpenness project={project} />
-        <ProjectTechnology project={project} />
-        <ProjectPrivacy project={project} />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <ProjectTechnology project={project} />
+          <ProjectPrivacy project={project} />
+        </div>
+
         <ProjectSecurity project={project} />
       </div>
     </div>

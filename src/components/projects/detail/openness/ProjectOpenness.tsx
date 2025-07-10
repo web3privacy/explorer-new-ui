@@ -102,9 +102,11 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
               <Accordion type="multiple" className="w-full">
                 <AccordionItem value="team">
                   <AccordionTrigger>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 text-muted-foreground">
                       <Users className="h-4 w-4" />
-                      Team Members ({teamMembers.length})
+                      <span className="text-sm font-sans">
+                        Team Members ({teamMembers.length})
+                      </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
@@ -114,9 +116,11 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
 
                 <AccordionItem value="funding">
                   <AccordionTrigger>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 text-muted-foreground">
                       <DollarSign className="h-4 w-4" />
-                      Funding ({funding.length})
+                      <span className="text-sm font-sans">
+                        Funding ({funding.length})
+                      </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>

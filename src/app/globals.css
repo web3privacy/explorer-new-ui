@@ -172,4 +172,45 @@
   h6 {
     @apply font-mono;
   }
+
+  /* Subtle scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.8 0 0);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.7 0 0);
+    background-clip: content-box;
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-thumb {
+    background: oklch(0.4 0 0);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.5 0 0);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.8 0 0) transparent;
+  }
+
+  .dark * {
+    scrollbar-color: oklch(0.4 0 0) transparent;
+  }
 }
