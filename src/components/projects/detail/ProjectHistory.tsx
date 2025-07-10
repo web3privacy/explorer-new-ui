@@ -1,3 +1,4 @@
+import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { Project } from "@/types/project";
 import { Clock } from "lucide-react";
@@ -75,14 +76,12 @@ export function ProjectHistory({ project }: ProjectHistoryProps) {
                     </p>
                   )}
                   {event.link && (
-                    <a
+                    <Link
                       href={event.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="text-primary hover:underline text-sm"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}

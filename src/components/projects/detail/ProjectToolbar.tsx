@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@/components/ui/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -66,7 +67,7 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={`block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground ${
             className || ""
@@ -76,7 +77,7 @@ const ListItem = React.forwardRef<
           <div className="text-sm font-medium leading-none line-clamp-1">
             {title}
           </div>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
@@ -117,8 +118,6 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
                       title={
                         link.key.charAt(0).toUpperCase() + link.key.slice(1)
                       }
-                      target="_blank"
-                      rel="noopener noreferrer"
                     />
                   ))}
                 </ul>
@@ -142,8 +141,6 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
                     key={key}
                     href={typeof value === "string" ? value : ""}
                     title={key.charAt(0).toUpperCase() + key.slice(1)}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   />
                 ))}
               </ul>

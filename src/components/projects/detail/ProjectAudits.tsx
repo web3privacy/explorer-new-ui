@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { Project } from "@/types/project";
 import { format } from "date-fns";
@@ -38,15 +39,13 @@ export function ProjectAudits({ project }: ProjectAuditsProps) {
                     className="flex items-start justify-between gap-4 py-3"
                   >
                     <div className="flex-1 space-y-2">
-                      <a
+                      <Link
                         href={audit.url || audit.link || ""}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="text-primary cursor-pointer hover:underline flex items-center gap-2 font-medium"
                       >
                         {audit.name}
                         <ExternalLink className="h-4 w-4" />
-                      </a>
+                      </Link>
 
                       {audit.time && (
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">

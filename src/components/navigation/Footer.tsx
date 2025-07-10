@@ -1,3 +1,4 @@
+import { Link as UILink } from "@/components/ui/link";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,12 +44,12 @@ export function Footer() {
                   },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link
+                    <UILink
                       href={item.href}
                       className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
-                    </Link>
+                    </UILink>
                   </li>
                 ))}
               </ul>
@@ -76,12 +77,12 @@ export function Footer() {
                   },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link
+                    <UILink
                       href={item.href}
                       className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
-                    </Link>
+                    </UILink>
                   </li>
                 ))}
               </ul>
@@ -91,9 +92,9 @@ export function Footer() {
           <div className="mt-12 pt-8 border-t text-center text-sm text-foreground/60">
             <p>
               Built with ❤️ by the{" "}
-              <a href="https://web3privacy.info/about/" target="_blank">
+              <UILink href="https://web3privacy.info/about/">
                 Web3Privacy
-              </a>{" "}
+              </UILink>{" "}
               team
             </p>
           </div>
