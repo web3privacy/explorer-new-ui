@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Project } from "@/types/project";
@@ -7,6 +8,7 @@ import {
   Check,
   CheckCircle,
   Database,
+  ExternalLink,
   FileText,
   Info,
   Lock,
@@ -37,6 +39,7 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
   const defaultPrivacy = project.default_privacy;
   const kyc = project.tracebility?.kyc;
   const privacyPolicyDefined = project.privacy_policy?.defined;
+  const privacyPolicyUrl = project.privacy_policy?.link;
   const compliance = project.compliance;
   const signInRequirements = project.tracebility?.sign_in_type_requirments;
   const collectedData = project.tracebility?.tracked_data;
@@ -105,6 +108,38 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
       const displayText = isPositive
         ? dataPoint.positiveDisplay
         : dataPoint.negativeDisplay;
+
+      if (
+        dataPoint.key === "Privacy Policy" &&
+        isPositive &&
+        privacyPolicyUrl
+      ) {
+        return (
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <IconComponent
+                className={`h-4 w-4 ${
+                  isPositive ? "text-green-500" : "text-red-500"
+                }`}
+              />
+              <span
+                className={`text-sm ${
+                  isPositive ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {displayText}
+              </span>
+            </div>
+            <Link
+              href={privacyPolicyUrl}
+              className="text-primary hover:underline flex items-center gap-1 text-sm"
+            >
+              View Policy
+              <ExternalLink className="h-3 w-3" />
+            </Link>
+          </div>
+        );
+      }
 
       return (
         <div className="flex items-center gap-2">
