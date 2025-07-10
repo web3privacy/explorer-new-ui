@@ -17,6 +17,10 @@ interface ProjectCardProps {
 }
 
 export async function ProjectCard({ project }: ProjectCardProps) {
+  // Extract project properties as constants
+  const { id, name, description, logos, ecosystem, categories, usecases } =
+    project;
+
   const ecosystems = await getEcosystems();
 
   const getEcosystemIcon = (ecosystemId: string) => {
@@ -25,21 +29,18 @@ export async function ProjectCard({ project }: ProjectCardProps) {
   };
 
   return (
-    <Link href={`/project/${project.id}`} className="block h-full">
+    <Link href={`/project/${id}`} className="block h-full">
       <Card className="h-full transition-colors hover:bg-accent/50 hover:shadow-md">
         <CardHeader>
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-1 items-center gap-4 overflow-hidden">
               <Avatar className="mt-1 size-10 flex-shrink-0">
-                <AvatarImage
-                  src={project.logos ? project.logos[0].url : ""}
-                  alt={project.name}
-                />
+                <AvatarImage src={logos ? logos[0].url : ""} alt={name} />
                 <AvatarFallback className="bg-primary/10 text-primary">
-                  {project.name[0].toUpperCase()}
+                  {name[0].toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <CardTitle className="truncate">{project.name}</CardTitle>
+              <CardTitle className="truncate">{name}</CardTitle>
             </div>
             <div className="flex-shrink-0">
               <ProjectBars project={project} />
@@ -48,14 +49,14 @@ export async function ProjectCard({ project }: ProjectCardProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <CardDescription className="line-clamp-2">
-            {project.description || "No description available"}
+            {description || "No description available"}
           </CardDescription>
           <div className="flex items-center justify-between gap-2">
             {/* Ecosystems */}
-            {project.ecosystem && project.ecosystem.length > 0 && (
+            {ecosystem && ecosystem.length > 0 && (
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-[0.4rem]">
-                  {project.ecosystem.map((eco, index) => {
+                  {ecosystem.map((eco, index) => {
                     const icon = getEcosystemIcon(eco);
                     return (
                       <Avatar
@@ -79,9 +80,9 @@ export async function ProjectCard({ project }: ProjectCardProps) {
 
             <div className="flex flex-col items-end gap-2">
               {/* Categories */}
-              {project.categories && project.categories.length > 0 && (
+              {categories && categories.length > 0 && (
                 <div className="flex flex-wrap gap-1 justify-end">
-                  {project.categories.map((category, index) => (
+                  {categories.map((category, index) => (
                     <Badge
                       key={index}
                       variant="secondary"
@@ -94,9 +95,9 @@ export async function ProjectCard({ project }: ProjectCardProps) {
               )}
 
               {/* Usecases */}
-              {project.usecases && project.usecases.length > 0 && (
+              {usecases && usecases.length > 0 && (
                 <div className="flex flex-wrap gap-1 justify-end">
-                  {project.usecases.map((usecase, index) => (
+                  {usecases.map((usecase, index) => (
                     <Badge
                       key={index}
                       variant="outline"
