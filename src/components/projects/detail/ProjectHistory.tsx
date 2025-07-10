@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import { Project } from "@/types/project";
 import { Clock } from "lucide-react";
 
@@ -8,11 +9,15 @@ interface ProjectHistoryProps {
 export function ProjectHistory({ project }: ProjectHistoryProps) {
   return (
     <section id="history" className="scroll-mt-20">
-      <div className="flex items-center gap-3 mb-6">
-        <Clock className="h-6 w-6 text-primary" />
-        <h2 className="text-3xl font-bold">History</h2>
+      <div>
+        <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+          <Clock className="h-6 w-6" />
+          History
+        </h3>
+        <Separator />
       </div>
-      <div className="prose prose-lg max-w-none">
+
+      <div className="prose prose-lg max-w-none mt-6">
         <p className="text-muted-foreground mb-4">
           {project.name} has evolved significantly since its inception, driven
           by community feedback and the growing need for privacy-preserving

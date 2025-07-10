@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Project } from "@/types/project";
 import { format } from "date-fns";
@@ -14,6 +15,7 @@ import {
   Calendar,
   Coins,
   DollarSign,
+  Eye,
   Flag,
   Users,
 } from "lucide-react";
@@ -68,7 +70,13 @@ export function ProjectOpenness({ project }: ProjectOpennessProps) {
   return (
     <section id="openness" className="scroll-mt-20">
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold mb-4">Openness</h3>
+        <div>
+          <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+            <Eye className="h-6 w-6" />
+            Openness
+          </h3>
+          <Separator />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>

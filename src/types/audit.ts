@@ -1,7 +1,8 @@
 export interface Audit {
-  name: string
-  company?: string
-  logo?: string
-  link?: string
-  time?: string
+  name: string;
+  company?: string;
+  logo?: string;
+  url?: string;
+  link?: string;
+  time?: string;
 }

@@ -1,4 +1,5 @@
 import { ProjectOpenness } from "@/components/projects/detail/openness/ProjectOpenness";
+import { ProjectAudits } from "@/components/projects/detail/ProjectAudits";
 import { ProjectHeader } from "@/components/projects/detail/ProjectHeader";
 import { ProjectPrivacy } from "@/components/projects/detail/ProjectPrivacy";
 import { ProjectSecurity } from "@/components/projects/detail/ProjectSecurity";
@@ -58,7 +59,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <ProjectPrivacy project={project} />
         </div>
 
-        <ProjectSecurity project={project} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <ProjectSecurity project={project} />
+          <ProjectAudits project={project} />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Project } from "@/types/project";
 import {
@@ -8,6 +9,7 @@ import {
   Database,
   FileText,
   Info,
+  Lock,
   LogIn,
   ShieldCheck,
   ShieldX,
@@ -167,28 +169,32 @@ export function ProjectPrivacy({ project }: ProjectPrivacyProps) {
   return (
     <section id="privacy" className="scroll-mt-20">
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold flex items-center gap-2">
-          Privacy
-          {defaultPrivacy !== undefined && (
-            <div className="flex items-center gap-2">
-              {defaultPrivacy ? (
-                <>
-                  <ShieldCheck className="h-4 w-4 text-green-500" />
-                  <span className="text-sm text-green-600">
-                    Enabled by default
-                  </span>
-                </>
-              ) : (
-                <>
-                  <ShieldX className="h-4 w-4 text-red-500" />
-                  <span className="text-sm text-red-600">
-                    Disabled by default
-                  </span>
-                </>
-              )}
-            </div>
-          )}
-        </h3>
+        <div>
+          <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+            <Lock className="h-6 w-6" />
+            Privacy
+            {defaultPrivacy !== undefined && (
+              <div className="flex items-center gap-1">
+                {defaultPrivacy ? (
+                  <>
+                    <ShieldCheck className="h-4 w-4 text-green-500" />
+                    <span className="text-xs text-green-600">
+                      Enabled by default
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <ShieldX className="h-4 w-4 text-red-500" />
+                    <span className="text-xs text-red-600">
+                      Disabled by default
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
+          </h3>
+          <Separator />
+        </div>
 
         <Card>
           <CardContent>

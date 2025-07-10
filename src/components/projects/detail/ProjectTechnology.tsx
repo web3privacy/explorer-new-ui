@@ -1,10 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Project } from "@/types/project";
 import {
   Check,
   CircleFadingArrowUp,
   Code,
+  Cog,
   Cpu,
   Database,
   Info,
@@ -127,7 +129,13 @@ export function ProjectTechnology({ project }: ProjectTechnologyProps) {
   return (
     <section id="technology" className="scroll-mt-20">
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold">Technology</h3>
+        <div>
+          <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+            <Cog className="h-6 w-6" />
+            Technology
+          </h3>
+          <Separator />
+        </div>
 
         <Card>
           <CardContent>
