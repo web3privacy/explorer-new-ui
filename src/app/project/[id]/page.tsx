@@ -2,8 +2,8 @@ import { ProjectOpenness } from "@/components/projects/detail/openness/ProjectOp
 import { ProjectAudits } from "@/components/projects/detail/ProjectAudits";
 import { ProjectHeader } from "@/components/projects/detail/ProjectHeader";
 import { ProjectPrivacy } from "@/components/projects/detail/ProjectPrivacy";
+import { ProjectRating } from "@/components/projects/detail/ProjectRating";
 import { ProjectSecurity } from "@/components/projects/detail/ProjectSecurity";
-import { ProjectStats } from "@/components/projects/detail/ProjectStats";
 import { ProjectTechnology } from "@/components/projects/detail/ProjectTechnology";
 import { getEcosystems } from "@/queries/ecosystems.queries";
 import { getProject } from "@/queries/projects.queries";
@@ -47,8 +47,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <div className="container px-4 md:px-6 lg:px-8 py-6 md:py-8">
       <div className="flex flex-col md:flex-row justify-between items-start gap-8 bg-muted/20 p-6 border rounded-xl mb-8">
-        <ProjectHeader project={project} />
-        <ProjectStats project={project} ecosystems={ecosystems} />
+        <ProjectHeader project={project} ecosystems={ecosystems} />
+        <ProjectRating project={project} />
       </div>
 
       <div className="space-y-8">
