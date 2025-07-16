@@ -1,36 +1,44 @@
-import Image from "next/image";
+"use client";
+
+import SearchInput from "@/components/ui/search-input";
 
 export function Hero() {
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects-section");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="relative w-full bg-black overflow-hidden rounded-lg mb-8">
-      {/* Background Image */}
-      <div className="relative h-[400px] md:h-[500px] lg:h-[600px]">
-        <Image
-          src="/explorer-hero - copia.png"
-          alt="Web3 Privacy Dashboard Eye"
-          fill
-          className="object-cover object-center"
-          priority
-        />
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 px-4">
+      {/* Full Width Noise Background */}
+      <div
+        className="absolute inset-0 bg-gray-800 opacity-50 -mx-4 left-1/2 transform -translate-x-1/2 w-screen"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+        }}
+      />
 
-        {/* Gradient Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-
-        {/* Content */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Your Guide to Privacy in Web3
-              </h1>
-              <p className="text-lg md:text-xl text-gray-200">
-                Discover tools, protocols, and projects protecting digital
-                freedom
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="relative z-10 max-w-2xl space-y-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          Your Guide to Privacy in Web3
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground">
+          Discover tools, protocols, and projects protecting digital freedom
+        </p>
       </div>
-    </div>
+
+      <div className="relative z-10 w-full max-w-md space-y-4">
+        <SearchInput />
+
+        <button
+          onClick={scrollToProjects}
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+        >
+          I&apos;ll just browse
+        </button>
+      </div>
+    </section>
   );
 }

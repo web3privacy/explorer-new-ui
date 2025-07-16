@@ -15,11 +15,13 @@ export default async function Home({ searchParams }: PageProps) {
     <div className="container px-4 md:px-6 lg:px-8">
       <div className="space-y-8">
         <Hero />
-        <ProjectsFilters />
-        {/* <CategoryTabs /> */}
-        <Suspense key={searchParamsKey} fallback={ProjectsList.fallback()}>
-          <ProjectsList searchParams={searchParams} />
-        </Suspense>
+        <div id="projects-section" className="space-y-8">
+          <ProjectsFilters />
+          {/* <CategoryTabs /> */}
+          <Suspense key={searchParamsKey} fallback={ProjectsList.fallback()}>
+            <ProjectsList searchParams={searchParams} />
+          </Suspense>
+        </div>
       </div>
     </div>
   );
