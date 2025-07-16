@@ -30,7 +30,7 @@ export function Footer() {
               <ul className="space-y-3">
                 {[
                   {
-                    label: "Manifiesto",
+                    label: "Manifesto",
                     href: "https://docs.web3privacy.info/about-us/manifesto/",
                   },
                   { label: "Events", href: "https://web3privacy.info/events/" },
@@ -93,7 +93,7 @@ export function Footer() {
             <p>
               Built with ❤️ by the{" "}
               <UILink href="https://web3privacy.info/about/">
-                Web3Privacy
+                Web3Privacy Now
               </UILink>{" "}
               team
             </p>

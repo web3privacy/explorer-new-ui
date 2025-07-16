@@ -74,14 +74,14 @@ export async function ProjectsList({
           {data?.pagination?.pageSize} projects per page
         </p>
       </div>{" "}
-      <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data?.projects?.map((project) => (
           <li key={project.id}>
             <ProjectCard project={project} />
           </li>
         ))}
       </ul>
-      <div className="flex justify-center gap-4 mt-8">
+      <div className="flex justify-center gap-4 my-8">
         {currentPage > 1 && (
           <Link
             href={buildPageUrl(params, currentPage - 1)}
@@ -119,7 +119,7 @@ ProjectsList.fallback = function () {
           </div>
         ))}
       </div>{" "}
-      <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {[...Array(PROJECTS_PER_PAGE)].map((_, index) => (
           <li key={index}>
             <div className="bg-card rounded-lg border p-6 space-y-4">
