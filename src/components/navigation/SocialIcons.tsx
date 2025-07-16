@@ -17,7 +17,7 @@ export function SocialIcons({ className }: SocialIconsProps) {
         <span className="sr-only">X</span>
       </Link>
       <Link
-        href="https://t.me/c/2035190866/1"
+        href="https://t.me/+QOj6126xlEs0OTQ0"
         className="text-foreground/60 hover:text-foreground/80 transition-colors"
       >
         <Send className="h-4 w-4" />
