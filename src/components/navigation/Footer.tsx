@@ -9,7 +9,10 @@ export function Footer() {
         <div className="py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center space-x-2">
+              <Link
+                href="https://web3privacy.info/about/"
+                className="flex items-center space-x-2"
+              >
                 <Image
                   src="/logo.svg"
                   alt="Web3Privacy Now"
@@ -92,10 +95,20 @@ export function Footer() {
           <div className="mt-12 pt-8 border-t text-center text-sm text-foreground/60">
             <p>
               Built with ❤️ by the{" "}
-              <UILink href="https://web3privacy.info/about/">
+              <UILink
+                href="https://web3privacy.info/about/"
+                className="underline decoration-1 underline-offset-4"
+              >
                 Web3Privacy Now
               </UILink>{" "}
-              team
+              team. The source code is available on{" "}
+              <UILink
+                href="https://github.com/web3privacy/web3privacy-now"
+                className="underline decoration-1 underline-offset-4"
+              >
+                GitHub
+              </UILink>
+              .
             </p>
           </div>
         </div>
