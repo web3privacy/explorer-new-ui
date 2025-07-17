@@ -1,5 +1,5 @@
-import { Link as UILink } from "@/components/ui/link";
-import { CirclePlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { MainNav } from "./MainNav";
 import { MobileNav } from "./MobileNav";
 import { SocialIcons } from "./SocialIcons";
@@ -11,15 +11,15 @@ export function Header() {
         <MainNav />
 
         <div className="flex items-center gap-8">
-          <div>
-            <UILink
-              href="https://explorer.web3privacy.info/project/create"
-              className="hidden md:flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-0 rounded-md text-sm font-medium transition-colors"
-            >
-              <CirclePlus className="h-4 w-4" />
-              <span>Add Project</span>
-            </UILink>
-          </div>
+          <Button
+            variant="secondary"
+            className="bg-muted/60 border hover:bg-accent/80 hover:shadow-md rounded-xl"
+            asChild
+          >
+            <Link href="https://explorer.web3privacy.info/project/create">
+              Add Project
+            </Link>
+          </Button>
 
           <div className="flex items-center gap-4">
             <SocialIcons className="hidden lg:flex" />
