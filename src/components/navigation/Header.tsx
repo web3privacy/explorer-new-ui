@@ -13,7 +13,7 @@ export function Header() {
         <div className="flex items-center gap-8">
           <Button
             variant="secondary"
-            className="bg-muted/60 border hover:bg-accent/80 hover:shadow-md rounded-xl"
+            className="hidden md:flex bg-muted/60 border hover:bg-accent/80 hover:shadow-md rounded-xl"
             asChild
           >
             <Link href="https://explorer.web3privacy.info/project/create">

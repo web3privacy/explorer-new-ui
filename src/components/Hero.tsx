@@ -2,6 +2,7 @@
 
 import { Component } from "@/components/ui/etheral-shadow";
 import SearchInput from "@/components/ui/search-input";
+import Image from "next/image";
 
 export function Hero() {
   const scrollToProjects = () => {
@@ -12,13 +13,25 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 px-4">
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 px-4 overflow-hidden">
+      {/* Ethereal Shadow Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <Component
           color="rgba(128, 128, 128, 1)"
           animation={{ scale: 100, speed: 90 }}
           noise={{ opacity: 1, scale: 1.2 }}
           sizing="fill"
+        />
+      </div>
+
+      {/* Explorer Image Background */}
+      <div className="absolute -right-32 -bottom-32 w-[600px] h-[600px] opacity-30 -z-5">
+        <Image
+          src="/explorer-icon.png"
+          alt="Privacy Explorer Background"
+          fill
+          className="object-contain"
+          priority
         />
       </div>
 
