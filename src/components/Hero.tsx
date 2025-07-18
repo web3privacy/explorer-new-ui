@@ -1,5 +1,6 @@
 "use client";
 
+import { Component } from "@/components/ui/etheral-shadow";
 import SearchInput from "@/components/ui/search-input";
 
 export function Hero() {
@@ -12,40 +13,26 @@ export function Hero() {
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 px-4">
-      {/* Full Width Noise Background */}
-      <div
-        className="absolute inset-0 bg-gray-800 opacity-50 -mx-4 left-1/2 transform -translate-x-1/2 w-screen"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
-        }}
-      />
+      <div className="absolute inset-0 w-full h-full -z-10">
+        <Component
+          color="rgba(128, 128, 128, 1)"
+          animation={{ scale: 100, speed: 90 }}
+          noise={{ opacity: 1, scale: 1.2 }}
+          sizing="fill"
+        />
+      </div>
 
       <div className="relative z-10 max-w-2xl space-y-4">
-        <div className="font-mono text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-[10px] leading-none">
-          <pre className="whitespace-pre overflow-hidden">
-            {`██╗   ██╗ ██████╗ ██╗   ██╗██████╗     ██████╗ ██╗   ██╗██╗██████╗ ███████╗
-╚██╗ ██╔╝██╔═══██╗██║   ██║██╔══██╗    ██╔════╝ ██║   ██║██║██╔══██╗██╔════╝
- ╚████╔╝ ██║   ██║██║   ██║██████╔╝    ██║  ███╗██║   ██║██║██║  ██║█████╗  
-  ╚██╔╝  ██║   ██║██║   ██║██╔══██╗    ██║   ██║██║   ██║██║██║  ██║██╔══╝  
-   ██║   ╚██████╔╝╚██████╔╝██║  ██║    ╚██████╔╝╚██████╔╝██║██████╔╝███████╗
-   ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝     ╚═════╝  ╚═════╝ ╚═╝╚═════╝ ╚══════╝
-
-████████╗ ██████╗     ██████╗ ██████╗ ██╗██╗   ██╗ █████╗  ██████╗██╗   ██╗
-╚══██╔══╝██╔═══██╗    ██╔══██╗██╔══██╗██║██║   ██║██╔══██╗██╔════╝╚██╗ ██╔╝
-   ██║   ██║   ██║    ██████╔╝██████╔╝██║██║   ██║███████║██║      ╚████╔╝ 
-   ██║   ██║   ██║    ██╔═══╝ ██╔══██╗██║╚██╗ ██╔╝██╔══██║██║       ╚██╔╝  
-   ██║   ╚██████╔╝    ██║     ██║  ██║██║ ╚████╔╝ ██║  ██║╚██████╗   ██║   
-   ╚═╝    ╚═════╝     ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝   ╚═╝   
-
-██╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██████╗ 
-██║████╗  ██║    ██║    ██║██╔════╝██╔══██╗╚════██╗
-██║██╔██╗ ██║    ██║ █╗ ██║█████╗  ██████╔╝ █████╔╝
-██║██║╚██╗██║    ██║███╗██║██╔══╝  ██╔══██╗ ╚═══██╗
-██║██║ ╚████║    ╚███╔███╔╝███████╗██████╔╝██████╔╝
-╚═╝╚═╝  ╚═══╝     ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═════╝`}
-          </pre>
-        </div>
-        <p className="text-lg md:text-xl text-muted-foreground">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium font-dm-mono tracking-widest">
+          Your Guide to Privacy in Web3
+        </h1>
+        <p
+          className="font-dm-mono font-medium text-muted-foreground"
+          style={{
+            lineHeight: "60px",
+            letterSpacing: "20%",
+          }}
+        >
           Discover tools, protocols, and projects protecting digital freedom
         </p>
       </div>

@@ -213,4 +213,17 @@
   .dark * {
     scrollbar-color: oklch(0.4 0 0) transparent;
   }
+
+  /* Custom font family */
+  .font-kyiv-serif {
+    font-family: var(--font-kyiv-serif), serif;
+  }
+
+  .font-major-mono {
+    font-family: var(--font-major-mono), monospace;
+  }
+
+  .font-dm-mono {
+    font-family: var(--font-dm-mono), monospace;
+  }
 }
