@@ -13,7 +13,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 px-4 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 overflow-hidden w-full">
       {/* Ethereal Shadow Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <Component
@@ -29,6 +29,17 @@ export function Hero() {
         <Image
           src="/explorer-icon.png"
           alt="Privacy Explorer Background"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      {/* Explorer Image Background - Left */}
+      <div className="hidden lg:block absolute -left-32 -bottom-32 w-[600px] h-[600px] opacity-30 -z-5">
+        <Image
+          src="/community-removebg.png"
+          alt="Privacy Explorer Background Left"
           fill
           className="object-contain"
           priority

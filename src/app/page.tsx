@@ -13,18 +13,20 @@ type PageProps = {
 export default async function Home({ searchParams }: PageProps) {
   const searchParamsKey = JSON.stringify(await searchParams);
   return (
-    <div className="container px-4 md:px-6 lg:px-8">
-      <div className="space-y-8">
-        <Hero />
-        <Highlights />
-        <div id="projects-section" className="space-y-8">
-          <ProjectsFilters />
-          {/* <CategoryTabs /> */}
-          <Suspense key={searchParamsKey} fallback={ProjectsList.fallback()}>
-            <ProjectsList searchParams={searchParams} />
-          </Suspense>
+    <>
+      <Hero />
+      <div className="container px-4 md:px-6 lg:px-8">
+        <div className="space-y-8">
+          <Highlights />
+          <div id="projects-section" className="space-y-8">
+            <ProjectsFilters />
+            {/* <CategoryTabs /> */}
+            <Suspense key={searchParamsKey} fallback={ProjectsList.fallback()}>
+              <ProjectsList searchParams={searchParams} />
+            </Suspense>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -49,11 +49,7 @@ export default function RootLayout({
       >
         <NuqsAdapter>
           <Header />
-          <main className="flex-1">
-            <div className="container mx-auto px-4 md:px-6 lg:px-8">
-              {children}
-            </div>
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </NuqsAdapter>
       </body>
