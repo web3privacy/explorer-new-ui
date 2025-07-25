@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: PageProps) {
   return (
     <>
       <Hero />
-      <div className="container px-4 md:px-6 lg:px-8">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="space-y-8">
           <Highlights />
           <div id="projects-section" className="space-y-8">
