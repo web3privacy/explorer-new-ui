@@ -29,7 +29,7 @@ const linkCategories = [
   {
     icon: <Globe size={16} />,
     label: "Official",
-    keys: ["web", "whitepaper", "docs", "changelog", "blog", "rss_feed"],
+    keys: ["whitepaper", "docs", "changelog", "blog", "rss_feed"],
   },
   {
     icon: <Code size={16} />,
