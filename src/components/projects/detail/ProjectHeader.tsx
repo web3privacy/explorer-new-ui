@@ -153,7 +153,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
                     <Badge
                       key={index}
                       variant="outline"
-                      className="text-xs font-medium border-primary/20 text-primary hover:bg-primary/5 max-w-20 truncate"
+                      className="text-xs font-medium border-primary/20 text-primary hover:bg-primary/5"
                     >
                       {usecase}
                     </Badge>
