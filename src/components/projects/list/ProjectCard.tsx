@@ -10,7 +10,7 @@ import {
 import { getEcosystems } from "@/queries/ecosystems.queries";
 import { Project } from "@/types/project";
 import Link from "next/link";
-import { ProjectBars } from "../detail/ProjectBars";
+import { ProjectRating } from "../detail/ProjectRating";
 
 interface ProjectCardProps {
   project: Project;
@@ -43,7 +43,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
               <CardTitle className="truncate">{name}</CardTitle>
             </div>
             <div className="flex-shrink-0">
-              <ProjectBars project={project} />
+              <ProjectRating project={project} />
             </div>
           </div>
         </CardHeader>
