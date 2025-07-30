@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 const highlightedProjects = [
   {
@@ -56,34 +57,37 @@ export function Highlights() {
         {/* Highlights Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlightedProjects.map((project) => (
-            <Card
+            <Link 
               key={project.id}
-              className="group hover:shadow-lg transition-all duration-200 cursor-pointer"
+              href={`/project/${project.id}`}
+              className="no-underline"
             >
-              <CardHeader>
-                <div className="flex items-start gap-4">
-                  <Avatar className={`h-12 w-12 ${project.bgColor}`}>
-                    <AvatarImage src={project.logo} alt={project.name} />
-                    <AvatarFallback className="text-white font-semibold">
-                      {project.name.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-xl">{project.name}</CardTitle>
+              <Card className="group hover:shadow-lg transition-all duration-200 h-full">
+                <CardHeader>
+                  <div className="flex items-start gap-4">
+                    <Avatar className={`h-12 w-12 ${project.bgColor}`}>
+                      <AvatarImage src={project.logo} alt={project.name} />
+                      <AvatarFallback className="text-white font-semibold">
+                        {project.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-xl">{project.name}</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="w-fit">
+                        {project.category}
+                      </Badge>
                     </div>
-                    <Badge variant="secondary" className="w-fit">
-                      {project.category}
-                    </Badge>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
