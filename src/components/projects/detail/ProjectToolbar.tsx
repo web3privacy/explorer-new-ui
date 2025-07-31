@@ -60,6 +60,14 @@ const linkCategories = [
 
 const allKnownKeys = linkCategories.flatMap((c) => c.keys);
 
+// Function to format link keys for display
+const formatLinkKey = (key: string): string => {
+  return key
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -115,9 +123,7 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
                     <ListItem
                       key={link.key}
                       href={typeof link.value === "string" ? link.value : ""}
-                      title={
-                        link.key.charAt(0).toUpperCase() + link.key.slice(1)
-                      }
+                      title={formatLinkKey(link.key)}
                     />
                   ))}
                 </ul>
@@ -140,7 +146,7 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
                   <ListItem
                     key={key}
                     href={typeof value === "string" ? value : ""}
-                    title={key.charAt(0).toUpperCase() + key.slice(1)}
+                    title={formatLinkKey(key)}
                   />
                 ))}
               </ul>
