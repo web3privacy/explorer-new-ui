@@ -13,7 +13,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 overflow-hidden w-full">
+    <section className="relative flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 overflow-hidden w-full px-4">
       {/* Ethereal Shadow Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <Component
@@ -47,16 +47,10 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-2xl space-y-4">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium font-dm-mono tracking-widest">
-          Your Guide to Privacy in Web3
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium font-major-mono tracking-widest">
+          your guide to privacy in web3
         </h1>
-        <p
-          className="font-dm-mono font-medium text-muted-foreground"
-          style={{
-            lineHeight: "60px",
-            letterSpacing: "20%",
-          }}
-        >
+        <p className="font-dm-mono font-medium text-muted-foreground">
           Discover tools, protocols, and projects protecting digital freedom
         </p>
       </div>
