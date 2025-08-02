@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Project } from "@/types/project";
 import { ExternalLink } from "lucide-react";
+import { ProjectToolbar } from "./ProjectToolbar";
 
 interface ProjectHeaderProps {
   project: Project;
@@ -34,7 +35,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
   const hiddenCount = hiddenUseCases.length;
 
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="space-y-4">
       <div className="space-y-4">
         <div className="flex items-start gap-4">
           <Avatar className="size-16 md:size-20 shrink-0">
@@ -187,7 +188,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
         </div>
       </div>
 
-      {/* <ProjectToolbar project={project} /> */}
+      <ProjectToolbar project={project} />
     </div>
   );
 }

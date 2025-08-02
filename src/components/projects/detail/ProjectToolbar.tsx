@@ -1,5 +1,15 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Link } from "@/components/ui/link";
 import {
   NavigationMenu,
@@ -13,9 +23,11 @@ import { Project } from "@/types/project";
 import {
   Code,
   Coins,
+  ExternalLink,
   Globe,
   Landmark,
   Megaphone,
+  Menu,
   MoreHorizontal,
   Users,
 } from "lucide-react";
@@ -56,6 +68,11 @@ const linkCategories = [
     label: "Financial",
     keys: ["coingecko", "token", "block_explorer"],
   },
+  {
+    icon: <MoreHorizontal size={16} />,
+    label: "Other",
+    keys: [],
+  },
 ];
 
 const allKnownKeys = linkCategories.flatMap((c) => c.keys);
@@ -82,7 +99,8 @@ const ListItem = React.forwardRef<
           }`}
           {...props}
         >
-          <div className="text-sm font-medium leading-none line-clamp-1">
+          <div className="text-sm flex items-center gap-2 font-medium leading-none line-clamp-1">
+            <ExternalLink size={14} className="text-muted-foreground" />
             {title}
           </div>
         </Link>
@@ -92,7 +110,73 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-export function ProjectToolbar({ project }: ProjectToolbarProps) {
+// Mobile Dropdown Component
+function MobileDropdown({ project }: { project: Project }) {
+  if (!project.links) return null;
+
+  const otherLinks = Object.entries(project.links).filter(
+    ([key, value]) => value && !allKnownKeys.includes(key)
+  );
+
+  const allAvailableCategories = linkCategories
+    .map((category) => {
+      let availableLinks = category.keys
+        .map((key) => ({ key, value: project.links?.[key] }))
+        .filter((link) => link.value);
+
+      if (category.label === "Other") {
+        availableLinks = otherLinks.map(([key, value]) => ({
+          key,
+          value,
+        }));
+      }
+
+      return { ...category, availableLinks };
+    })
+    .filter((category) => category.availableLinks.length > 0);
+
+  if (allAvailableCategories.length === 0) return null;
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="sm" className="w-full">
+          <Menu size={16} />
+          <span className="ml-2">Links</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-[200px]" align="start">
+        {allAvailableCategories.map((category, categoryIndex) => (
+          <React.Fragment key={category.label}>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel className="flex items-center gap-2">
+                {category.icon}
+                {category.label}
+              </DropdownMenuLabel>
+              {category.availableLinks.map((link) => (
+                <DropdownMenuItem key={link.key} asChild>
+                  <Link
+                    href={typeof link.value === "string" ? link.value : ""}
+                    className="flex items-center gap-2"
+                  >
+                    <ExternalLink size={14} className="text-muted-foreground" />
+                    {formatLinkKey(link.key)}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuGroup>
+            {categoryIndex < allAvailableCategories.length - 1 && (
+              <DropdownMenuSeparator />
+            )}
+          </React.Fragment>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+// Desktop Navigation Component
+function DesktopNavigation({ project }: { project: Project }) {
   if (!project.links) return null;
 
   const otherLinks = Object.entries(project.links).filter(
@@ -103,9 +187,16 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
     <NavigationMenu>
       <NavigationMenuList>
         {linkCategories.map((category) => {
-          const availableLinks = category.keys
+          let availableLinks = category.keys
             .map((key) => ({ key, value: project.links?.[key] }))
             .filter((link) => link.value);
+
+          if (category.label === "Other") {
+            availableLinks = otherLinks.map(([key, value]) => ({
+              key,
+              value,
+            }));
+          }
 
           if (availableLinks.length === 0) return null;
 
@@ -131,29 +222,25 @@ export function ProjectToolbar({ project }: ProjectToolbarProps) {
             </NavigationMenuItem>
           );
         })}
-
-        {otherLinks.length > 0 && (
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>
-              <div className="flex items-center gap-2">
-                <MoreHorizontal size={16} />
-                <span className="hidden sm:inline">Other</span>
-              </div>
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[200px] gap-2 p-3 md:w-[250px]">
-                {otherLinks.map(([key, value]) => (
-                  <ListItem
-                    key={key}
-                    href={typeof value === "string" ? value : ""}
-                    title={formatLinkKey(key)}
-                  />
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        )}
       </NavigationMenuList>
     </NavigationMenu>
+  );
+}
+
+export function ProjectToolbar({ project }: ProjectToolbarProps) {
+  if (!project.links) return null;
+
+  return (
+    <>
+      {/* Mobile Dropdown */}
+      <div className="block md:hidden">
+        <MobileDropdown project={project} />
+      </div>
+
+      {/* Desktop Navigation */}
+      <div className="hidden md:block">
+        <DesktopNavigation project={project} />
+      </div>
+    </>
   );
 }

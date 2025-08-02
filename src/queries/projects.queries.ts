@@ -29,7 +29,9 @@ export async function getProjects(
   const queryString = createParams(filters);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const res = await fetch(`${baseUrl}/api/projects?${queryString}`);
+  const res = await fetch(`${baseUrl}/api/projects?${queryString}`, {
+    next: { revalidate: 300 }, // Cache for 5 minutes (300 seconds)
+  });
   if (!res.ok) {
     throw new Error(`Failed to fetch projects: ${res.statusText}`);
   }
@@ -39,7 +41,9 @@ export async function getProjects(
 
 export async function getProject(id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(`${baseUrl}/api/projects/${id}`);
+  const res = await fetch(`${baseUrl}/api/projects/${id}`, {
+    next: { revalidate: 300 }, // Cache for 5 minutes (300 seconds)
+  });
   const data = await res.json();
 
   if (!res.ok) {
