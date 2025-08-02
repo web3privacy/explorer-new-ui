@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   return (
     <div className="container px-4 md:px-6 lg:px-8 py-6 md:py-8 mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 bg-muted/20 p-6 border rounded-xl mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-8 bg-muted/20 p-6 border rounded-xl mb-8">
         <ProjectHeader project={project} ecosystems={ecosystems} />
         <ProjectRatingWithDetails project={project} size={160} />
       </div>

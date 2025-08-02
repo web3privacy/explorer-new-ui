@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/tooltip";
 import { Project } from "@/types/project";
 import { ExternalLink } from "lucide-react";
-import { ProjectToolbar } from "./ProjectToolbar";
 
 interface ProjectHeaderProps {
   project: Project;
@@ -97,13 +96,14 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
         )}
 
         {/* Ecosystems and Use Cases */}
-        <div className="flex items-center gap-6 border-y py-4">
+        <div className="flex items-center  gap-6 border-y py-4">
           {/* Ecosystems */}
           {project.ecosystem && project.ecosystem.length > 0 && (
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <span className="text-sm font-medium text-muted-foreground">
                 Ecosystems:
               </span>
+
               <TooltipProvider delayDuration={100}>
                 <div className="flex -space-x-2">
                   {project.ecosystem.map((eco, index) => {
@@ -138,15 +138,16 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
           {project.ecosystem &&
             project.ecosystem.length > 0 &&
             useCases.length > 0 && (
-              <Separator orientation="vertical" className="!h-6" />
+              <Separator orientation="vertical" className="!h-10" />
             )}
 
           {/* Use Cases */}
           {useCases.length > 0 && (
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <span className="text-sm font-medium text-muted-foreground">
                 Use Cases:
               </span>
+
               <TooltipProvider delayDuration={100}>
                 <div className="flex flex-wrap gap-2 items-center">
                   {visibleUseCases.map((usecase, index) => (
@@ -185,7 +186,8 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
           )}
         </div>
       </div>
-      <ProjectToolbar project={project} />
+
+      {/* <ProjectToolbar project={project} /> */}
     </div>
   );
 }

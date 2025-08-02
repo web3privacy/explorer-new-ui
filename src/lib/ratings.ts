@@ -6,22 +6,22 @@ import {
 } from "@/types/project";
 
 export const RATING_COLORS = [
-  "#EA171D", // 1-10%
-  "#FB2D00", // 11-20%
-  "#FD6515", // 21-30%
-  "#FD941A", // 31-40%
-  "#FECD0A", // 41-50%
-  "#FFD806", // 51-60%
-  "#D2EF1F", // 61-70%
-  "#95DF1C", // 71-80%
-  "#42FF00", // 81-90%
-  "#42FF00", // 91-100%
+  "hsl(358, 77%, 30%)", // 1-10% - Dark red
+  "hsl(11, 100%, 30%)", // 11-20% - Dark red-orange
+  "hsl(25, 98%, 30%)", // 21-30% - Dark orange
+  "hsl(35, 96%, 30%)", // 31-40% - Dark orange-yellow
+  "hsl(48, 98%, 30%)", // 41-50% - Dark yellow
+  "hsl(51, 100%, 30%)", // 51-60% - Dark yellow
+  "hsl(72, 85%, 30%)", // 61-70% - Dark yellow-green
+  "hsl(85, 85%, 30%)", // 71-80% - Dark green
+  "hsl(102, 100%, 30%)", // 81-90% - Dark bright green
+  "hsl(102, 100%, 30%)", // 91-100% - Dark bright green
 ] as const;
 
 export const getRatingColor = (percentage: number): string => {
   // Handle edge cases
-  if (percentage === 100) return "#42FF00";
-  if (percentage === 0) return "#494949";
+  if (percentage === 100) return "hsl(102, 100%, 30%)"; // Dark bright green
+  if (percentage === 0) return "hsl(0, 0%, 30%)"; // Dark gray
 
   // Normalize percentage to 0-100 range
   const normalizedPercentage = Math.min(Math.max(percentage, 0), 100);
@@ -36,7 +36,7 @@ export const getRatingColor = (percentage: number): string => {
 export const getRatingColorClass = (percentage: number): string => {
   const color = getRatingColor(percentage);
 
-  // Convert hex to CSS custom property or use inline style
+  // Return Tailwind class with HSL color
   return `text-[${color}]`;
 };
 

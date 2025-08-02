@@ -59,7 +59,7 @@ export function ProjectRatingWithDetails({
   const radius = size / 2;
 
   return (
-    <div className="flex flex-col items-center bg-card rounded-xl p-6 shadow-md w-full max-w-xs">
+    <div className="flex flex-col items-center bg-card rounded-xl p-6 shadow-md w-full max-w-xs border border-muted-foreground/20">
       {/* Pie Chart */}
       <svg
         viewBox={`0 0 ${radius * 2} ${radius * 2}`}
@@ -96,9 +96,7 @@ export function ProjectRatingWithDetails({
               key={type}
               className="flex items-center justify-between text-sm border-b last:border-b-0 pb-1"
             >
-              <span className="font-medium capitalize" style={{ color }}>
-                {rating.name}:
-              </span>
+              <span className="text-muted-foreground">{rating.name}:</span>
               <span className="font-bold" style={{ color }}>
                 {rating.percentagePoints.toFixed(1)}% ({label})
               </span>
