@@ -48,7 +48,7 @@ export function Header() {
 
         <div className="flex items-center gap-6">
           <Button
-            variant="secondary"
+            variant="default"
             className="hidden md:flex bg-muted/60 border hover:bg-accent/80 hover:shadow-md rounded-xl"
             asChild
           >

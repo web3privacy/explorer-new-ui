@@ -85,7 +85,7 @@ export async function ProjectsList({
         {currentPage > 1 && (
           <Link
             href={buildPageUrl(params, currentPage - 1)}
-            className="px-4 py-2 bg-muted rounded hover:bg-muted/80"
+            className="px-4 py-2 bg-muted rounded hover:bg-muted/80 font-dm-mono"
           >
             ← Previous
           </Link>
@@ -93,7 +93,7 @@ export async function ProjectsList({
         {currentPage < totalPages && (
           <Link
             href={buildPageUrl(params, currentPage + 1)}
-            className="px-4 py-2 bg-muted rounded hover:bg-muted/80"
+            className="px-4 py-2 bg-muted rounded hover:bg-muted/80 font-dm-mono"
           >
             Next →
           </Link>

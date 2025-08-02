@@ -30,7 +30,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Link href={`/project/${id}`} className="block h-full">
-      <Card className="h-full transition-colors hover:bg-accent/50 hover:shadow-md">
+      <Card className="h-full !rounded-none transition-colors hover:bg-accent/50 hover:shadow-md">
         <CardHeader>
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-1 items-center gap-4 overflow-hidden">
