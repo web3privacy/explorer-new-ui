@@ -17,7 +17,8 @@ export function MobileNav() {
           <Menu className="h-6 w-6" />
           <span className="sr-only">Toggle menu</span>
         </Button>
-      </SheetTrigger>{" "}
+      </SheetTrigger>
+
       <SheetContent side="left" className="w-[300px] sm:w-[400px]">
         <SheetHeader className="px-4 pt-6 pb-2">
           <SheetTitle className="text-lg">Navigation Menu</SheetTitle>
