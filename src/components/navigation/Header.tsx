@@ -47,13 +47,9 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-6">
-          <Button
-            variant="default"
-            className="hidden md:flex bg-muted/60 border hover:bg-accent/80 hover:shadow-md rounded-xl"
-            asChild
-          >
+          <Button variant="secondary" className="hidden md:flex border" asChild>
             <Link href="https://explorer.web3privacy.info/project/create">
-              Add Project
+              ADD PROJECT
             </Link>
           </Button>
 
