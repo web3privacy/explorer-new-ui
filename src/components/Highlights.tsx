@@ -31,7 +31,7 @@ export async function Highlights() {
       <div className="space-y-8">
         {/* Bordered Title */}
         <div className="flex justify-center">
-          <div className="border px-8 py-4 w-full">
+          <div className="border border-light  px-8 py-4 w-full">
             <h2 className="text-3xl md:text-4xl tracking-tight text-white text-center font-major-mono">
               highlights
             </h2>
@@ -46,7 +46,7 @@ export async function Highlights() {
               href={`/project/${project.id}`}
               className="no-underline"
             >
-              <Card className="group hover:shadow-lg !rounded-none transition-all duration-200 h-full">
+              <Card className="group hover:shadow-lg !rounded-none transition-all duration-200 h-full border-light">
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <Avatar

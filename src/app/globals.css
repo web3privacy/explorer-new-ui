@@ -227,3 +227,7 @@
     font-family: var(--font-dm-mono), monospace;
   }
 }
+
+.border-light {
+  border-color: oklch(0.9219 0 0) !important;
+}
