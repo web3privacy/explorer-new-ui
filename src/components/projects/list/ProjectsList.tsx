@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getProjects } from "@/queries/projects.queries";
 import {
@@ -83,20 +84,14 @@ export async function ProjectsList({
       </ul>
       <div className="flex justify-center gap-4 my-8">
         {currentPage > 1 && (
-          <Link
-            href={buildPageUrl(params, currentPage - 1)}
-            className="px-4 py-2 bg-muted rounded hover:bg-muted/80 font-dm-mono"
-          >
-            ← Previous
-          </Link>
+          <Button variant="default" asChild>
+            <Link href={buildPageUrl(params, currentPage - 1)}>← PREVIOUS</Link>
+          </Button>
         )}
         {currentPage < totalPages && (
-          <Link
-            href={buildPageUrl(params, currentPage + 1)}
-            className="px-4 py-2 bg-muted rounded hover:bg-muted/80 font-dm-mono"
-          >
-            Next →
-          </Link>
+          <Button variant="default" asChild>
+            <Link href={buildPageUrl(params, currentPage + 1)}>NEXT →</Link>
+          </Button>
         )}
       </div>
     </div>
