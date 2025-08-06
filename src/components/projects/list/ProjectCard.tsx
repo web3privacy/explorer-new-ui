@@ -48,7 +48,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <CardDescription className="line-clamp-2">
+          <CardDescription className="line-clamp-2 font-dm-mono font-light">
             {description || "No description available"}
           </CardDescription>
           <div className="flex items-center justify-between gap-2">
@@ -86,7 +86,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                     <Badge
                       key={index}
                       variant="secondary"
-                      className="text-[10px]"
+                      className="text-[10px] font-dm-mono font-light"
                     >
                       {category}
                     </Badge>
@@ -101,7 +101,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                     <Badge
                       key={index}
                       variant="outline"
-                      className="text-[10px]"
+                      className="text-[10px] font-dm-mono font-light"
                     >
                       {usecase}
                     </Badge>
