@@ -40,7 +40,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                   {name[0].toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <CardTitle className="truncate">{name}</CardTitle>
+              <CardTitle className="truncate font-major-mono">{name}</CardTitle>
             </div>
             <div className="flex-shrink-0">
               <ProjectRating project={project} />
