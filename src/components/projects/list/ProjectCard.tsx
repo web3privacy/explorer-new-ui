@@ -86,7 +86,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                     <Badge
                       key={index}
                       variant="secondary"
-                      className="text-[10px] font-dm-mono font-light"
+                      className="text-[10px] font-dm-mono"
                     >
                       {category}
                     </Badge>
@@ -101,7 +101,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                     <Badge
                       key={index}
                       variant="outline"
-                      className="text-[10px] font-dm-mono font-light"
+                      className="text-[10px] font-dm-mono"
                     >
                       {usecase}
                     </Badge>
