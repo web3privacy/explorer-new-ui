@@ -22,7 +22,7 @@ export function Footer() {
                   priority
                 />
               </Link>
-              <p className="mt-4 text-sm text-foreground/60 max-w-xs leading-relaxed">
+              <p className="mt-4 text-base text-foreground/60 max-w-xs leading-relaxed">
                 Exploring and showcasing privacy-focused projects in the Web3
                 ecosystem.
               </p>
@@ -49,7 +49,7 @@ export function Footer() {
                   <li key={item.label}>
                     <UILink
                       href={item.href}
-                      className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
+                      className="text-base text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
                     </UILink>
@@ -82,7 +82,7 @@ export function Footer() {
                   <li key={item.label}>
                     <UILink
                       href={item.href}
-                      className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
+                      className="text-base text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
                     </UILink>
@@ -92,7 +92,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-foreground/50 text-center text-sm text-foreground/60 font-dm-mono font-light">
+          <div className="m-12 pt-8 border-t border-foreground/30 text-center text-sm text-foreground/60">
             <p>
               Built with ❤️ by the{" "}
               <UILink
