@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-foreground/50 bg-background/95 mt-auto">
+    <footer className="border-t border-foreground/50 bg-background/95">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="py-12 md:py-16">
+        <div className="py-8 md:py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
             <div className="md:col-span-2">
               <Link
@@ -92,7 +92,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="m-12 pt-8 border-t border-foreground/30 text-center text-sm text-foreground/60">
+          <div className="mt-12 mx-12 pt-8 border-t border-foreground/30 text-center text-sm text-foreground/60">
             <p>
               Built with ❤️ by the{" "}
               <UILink
