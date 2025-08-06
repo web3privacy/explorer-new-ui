@@ -48,7 +48,7 @@ export async function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <CardDescription className="line-clamp-2 font-dm-mono font-light">
+          <CardDescription className="line-clamp-2">
             {description || "No description available"}
           </CardDescription>
           <div className="flex items-center justify-between gap-2">
