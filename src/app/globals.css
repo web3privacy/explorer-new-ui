@@ -52,6 +52,7 @@
   --shadow-xl: 0px 1px 0px 0px hsl(0 0% 0% / 0),
     0px 8px 10px -1px hsl(0 0% 0% / 0);
   --shadow-2xl: 0px 1px 0px 0px hsl(0 0% 0% / 0);
+  --font-kyiv-type-serif: "Kyiv Type Serif", serif;
 }
 
 .dark {
@@ -215,8 +216,8 @@
   }
 
   /* Custom font family */
-  .font-kyiv-serif {
-    font-family: var(--font-kyiv-serif), serif;
+  .font-kyiv-type-serif {
+    font-family: var(--font-kyiv-type-serif), serif;
   }
 
   .font-major-mono {

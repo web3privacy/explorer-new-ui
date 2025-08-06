@@ -40,7 +40,12 @@ export async function ProjectCard({ project }: ProjectCardProps) {
                   {name[0].toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <CardTitle className="truncate font-major-mono">{name}</CardTitle>
+              <CardTitle
+                className="truncate"
+                style={{ fontFamily: '"Kyiv Type Serif", serif' }}
+              >
+                {name}
+              </CardTitle>
             </div>
             <div className="flex-shrink-0">
               <ProjectRating project={project} />

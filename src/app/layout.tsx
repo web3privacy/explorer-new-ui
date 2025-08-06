@@ -7,6 +7,7 @@ import {
   Geist_Mono,
   Major_Mono_Display,
 } from "next/font/google";
+
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 
