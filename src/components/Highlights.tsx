@@ -64,11 +64,14 @@ export async function Highlights() {
                     </Avatar>
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-xl">
+                        <CardTitle className="text-xl font-dm-mono font-light">
                           {project.name}
                         </CardTitle>
                       </div>
-                      <Badge variant="secondary" className="w-fit">
+                      <Badge
+                        variant="secondary"
+                        className="w-fit font-dm-mono font-light"
+                      >
                         {project.categories?.[0] || "General"}
                       </Badge>
                     </div>
