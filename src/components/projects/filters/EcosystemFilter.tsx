@@ -45,14 +45,18 @@ export default function EcosystemFilter() {
         onValueChange={(value) => setSelectedEcosystem(value ? [value] : [])}
         disabled={loading}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full !bg-background !border !border-foreground !text-primary-foreground hover:!bg-foreground hover:!text-background !rounded-none">
           <SelectValue
             placeholder={loading ? "Loading..." : "Select ecosystem"}
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="!bg-background !border !border-foreground !text-primary-foreground !rounded-none">
           {options.map((eco) => (
-            <SelectItem key={eco.id} value={eco.id}>
+            <SelectItem
+              key={eco.id}
+              value={eco.id}
+              className="hover:!bg-foreground hover:!text-background focus:!bg-foreground focus:!text-background"
+            >
               <span className="flex items-center gap-2">
                 <Avatar className="size-4">
                   <AvatarImage src={eco.icon} alt={`${eco.name} icon`} />

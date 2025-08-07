@@ -45,14 +45,18 @@ export default function CategoryFilter() {
         onValueChange={(value) => setSelectedCategory(value ? [value] : [])}
         disabled={loading}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full !bg-background !border !border-foreground !text-primary-foreground hover:!bg-foreground hover:!text-background !rounded-none">
           <SelectValue
             placeholder={loading ? "Loading..." : "Select category"}
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="!bg-background !border !border-foreground !text-primary-foreground !rounded-none">
           {options.map((cat) => (
-            <SelectItem key={cat.id} value={cat.id}>
+            <SelectItem
+              key={cat.id}
+              value={cat.id}
+              className="hover:!bg-foreground hover:!text-background focus:!bg-foreground focus:!text-background"
+            >
               <span className="flex items-center gap-2">
                 <Avatar className="size-4">
                   <AvatarImage src={cat.icon} alt={`${cat.name} icon`} />

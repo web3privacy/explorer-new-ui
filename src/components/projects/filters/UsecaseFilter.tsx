@@ -43,14 +43,18 @@ export default function UsecaseFilter() {
         onValueChange={(value) => setSelectedUsecase(value ? [value] : [])}
         disabled={loading}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full !bg-background !border !border-foreground !text-primary-foreground hover:!bg-foreground hover:!text-background !rounded-none">
           <SelectValue
             placeholder={loading ? "Loading..." : "Select use case"}
           />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="!bg-background !border !border-foreground !text-primary-foreground !rounded-none">
           {options.map((usecase) => (
-            <SelectItem key={usecase.id} value={usecase.id}>
+            <SelectItem
+              key={usecase.id}
+              value={usecase.id}
+              className="hover:!bg-foreground hover:!text-background focus:!bg-foreground focus:!text-background"
+            >
               {usecase.name}
             </SelectItem>
           ))}
