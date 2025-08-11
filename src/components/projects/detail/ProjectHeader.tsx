@@ -52,13 +52,13 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
           <div className="space-y-3 min-w-0 flex-1">
             {project.links?.web ? (
               <Link href={project.links.web} className="group">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight inline-flex items-center gap-2 group-hover:text-primary transition-colors">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight inline-flex items-center gap-2 group-hover:text-primary transition-colors font-dm-mono">
                   {project.name}
                   <ExternalLink className="size-4 md:size-5 opacity-60 group-hover:opacity-100 transition-opacity" />
                 </h1>
               </Link>
             ) : (
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-dm-mono">
                 {project.name}
               </h1>
             )}
@@ -69,7 +69,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
                   <Badge
                     key={index}
                     variant="secondary"
-                    className="text-xs md:text-sm font-medium"
+                    className="text-xs md:text-sm font-medium font-dm-mono"
                   >
                     {category}
                   </Badge>
@@ -155,7 +155,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
                     <Badge
                       key={index}
                       variant="outline"
-                      className="text-xs font-medium border-primary/20 text-primary hover:bg-primary/5"
+                      className="text-xs font-medium border-primary/20 text-primary hover:bg-primary/5 font-dm-mono"
                     >
                       {usecase}
                     </Badge>
@@ -165,7 +165,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
                       <TooltipTrigger asChild>
                         <Badge
                           variant="secondary"
-                          className="text-xs cursor-pointer"
+                          className="text-xs cursor-pointer font-dm-mono"
                         >
                           +{hiddenCount}
                         </Badge>
@@ -173,7 +173,7 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
                       <TooltipContent>
                         <div className="flex flex-col gap-1 items-start">
                           {hiddenUseCases.map((usecase, index) => (
-                            <span key={index} className="text-xs">
+                            <span key={index} className="text-xs font-dm-mono">
                               {usecase}
                             </span>
                           ))}
