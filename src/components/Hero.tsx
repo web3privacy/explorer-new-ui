@@ -60,7 +60,7 @@ export function Hero() {
 
         <button
           onClick={scrollToProjects}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors underline font-dm-mono"
         >
           I&apos;ll just browse
         </button>
