@@ -40,7 +40,11 @@ export function Header() {
 
         <div className="hidden lg:flex gap-6">
           {menuItems.map((item) => (
-            <Link key={item.href} href={item.href} className="font-dm-mono">
+            <Link
+              key={item.href}
+              href={item.href}
+              className="font-dm-mono text-muted-foreground"
+            >
               {item.text}
             </Link>
           ))}
