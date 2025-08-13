@@ -29,7 +29,7 @@ export default function SearchInput() {
         <div className="relative">
           <Input
             name="q"
-            className="peer ps-9 pe-9 bg-background border-foreground"
+            className="peer ps-9 pe-9 bg-background border-foreground font-dm-mono"
             placeholder="Search..."
             type="search"
             value={searchValue}

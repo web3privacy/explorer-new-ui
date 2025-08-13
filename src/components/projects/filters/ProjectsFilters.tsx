@@ -40,23 +40,25 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({ className }) => {
             </SheetHeader>
             <div className="space-y-4 mt-6">
               <div>
-                <label className="text-sm font-medium mb-2 block">Search</label>
+                <label className="text-sm font-medium mb-2 block font-dm-mono">
+                  Search
+                </label>
                 <SearchInput />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">
+                <label className="text-sm font-medium mb-2 block font-dm-mono">
                   Ecosystem
                 </label>
                 <EcosystemFilter />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">
+                <label className="text-sm font-medium mb-2 block font-dm-mono">
                   Category
                 </label>
                 <CategoryFilter />
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block">
+                <label className="text-sm font-medium mb-2 block font-dm-mono">
                   Use Case
                 </label>
                 <UsecaseFilter />
