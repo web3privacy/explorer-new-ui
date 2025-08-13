@@ -46,7 +46,7 @@ export async function Highlights() {
               href={`/project/${project.id}`}
               className="no-underline"
             >
-              <Card className="group hover:shadow-lg !rounded-none transition-all duration-200 h-full border-light">
+              <Card className="group hover:shadow-lg !rounded-none transition-all duration-200 h-full border-light bg-background">
                 <CardHeader>
                   <div className="flex items-start gap-4">
                     <Avatar
