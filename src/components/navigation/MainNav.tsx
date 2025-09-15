@@ -1,3 +1,4 @@
+import { MAIN_NAV_MENU_ITEMS, type MenuItem } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,20 +9,6 @@ interface MainNavProps {
   className?: string;
   isMobile?: boolean;
 }
-
-const menuItems = [
-  { text: "About", href: "/about" },
-  {
-    text: "Scoring",
-    href: "/scoring",
-  },
-  { text: "Contribute", href: "https://github.com/web3privacy/explorer-data" },
-  {
-    text: "+ Add Project",
-    href: "https://old-explorer-app.vercel.app/project/create",
-    isButton: true,
-  },
-];
 
 export function MainNav({ className, isMobile }: MainNavProps) {
   return (
@@ -50,7 +37,7 @@ export function MainNav({ className, isMobile }: MainNavProps) {
       )}
 
       <div className="flex gap-6 flex-col lg:flex-row w-full">
-        {menuItems.map((item) => (
+        {MAIN_NAV_MENU_ITEMS.map((item: MenuItem) => (
           <Link
             key={item.href}
             className={buttonVariants({

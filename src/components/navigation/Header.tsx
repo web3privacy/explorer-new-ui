@@ -1,17 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { HEADER_MENU_ITEMS, NAVIGATION_LINKS } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { MobileNav } from "./MobileNav";
 import { SocialIcons } from "./SocialIcons";
-
-const menuItems = [
-  { text: "About", href: "/about" },
-  {
-    text: "Scoring",
-    href: "https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/s9flkE6tMaJ4f2tzWu-FmDy7Zx_TRPe3jdXr2iYmYH0",
-  },
-  { text: "Contribute", href: "https://github.com/web3privacy/explorer-data" },
-];
 
 export function Header() {
   return (
@@ -39,7 +31,7 @@ export function Header() {
         </Link>
 
         <div className="hidden lg:flex gap-6">
-          {menuItems.map((item) => (
+          {HEADER_MENU_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -52,9 +44,7 @@ export function Header() {
 
         <div className="flex items-center gap-6">
           <Button variant="secondary" className="hidden md:flex border" asChild>
-            <Link href="https://old-explorer-app.vercel.app/project/create">
-              ADD PROJECT
-            </Link>
+            <Link href={NAVIGATION_LINKS.ADD_PROJECT}>ADD PROJECT</Link>
           </Button>
 
           <SocialIcons className="hidden lg:flex" />
