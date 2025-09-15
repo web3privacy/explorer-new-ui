@@ -52,7 +52,7 @@ export function Header() {
 
         <div className="flex items-center gap-6">
           <Button variant="secondary" className="hidden md:flex border" asChild>
-            <Link href="https://explorer.web3privacy.info/project/create">
+            <Link href="https://old-explorer-app.vercel.app/project/create">
               ADD PROJECT
             </Link>
           </Button>

@@ -18,7 +18,7 @@ const menuItems = [
   { text: "Contribute", href: "https://github.com/web3privacy/explorer-data" },
   {
     text: "+ Add Project",
-    href: "https://explorer.web3privacy.info/project/create",
+    href: "https://old-explorer-app.vercel.app/project/create",
     isButton: true,
   },
 ];
