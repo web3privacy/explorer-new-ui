@@ -1,7 +1,7 @@
 import { Link } from "@/components/ui/link";
 import { cn } from "@/lib/utils";
-import { Github, Send } from "lucide-react";
 import Image from "next/image";
+import { FaTelegram } from "react-icons/fa";
 
 interface SocialIconsProps {
   className?: string;
@@ -27,14 +27,20 @@ export function SocialIcons({ className }: SocialIconsProps) {
         href="https://t.me/+QOj6126xlEs0OTQ0"
         className="text-foreground/60 hover:text-foreground/80 transition-colors"
       >
-        <Send className="h-4 w-4" />
+        <FaTelegram className="h-6 w-6 text-white" />
         <span className="sr-only">Telegram</span>
       </Link>
       <Link
         href="https://github.com/web3privacy"
         className="text-foreground/60 hover:text-foreground/80 transition-colors"
       >
-        <Github className="h-4 w-4" />
+        <Image
+          src="/github-mark-white.png"
+          alt="GitHub"
+          width={16}
+          height={16}
+          className="h-6 w-6"
+        />
         <span className="sr-only">GitHub</span>
       </Link>
     </div>
