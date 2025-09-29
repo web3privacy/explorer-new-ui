@@ -43,6 +43,19 @@ export function SocialIcons({ className }: SocialIconsProps) {
         />
         <span className="sr-only">GitHub</span>
       </Link>
+      <Link
+        href="https://matrix.to/#/%23web3privacy:matrix.org"
+        className="text-foreground/60 hover:text-foreground/80 transition-colors"
+      >
+        <Image
+          src="/matrix-favicon.svg"
+          alt="Matrix"
+          width={16}
+          height={16}
+          className="h-6 w-6 brightness-0 invert"
+        />
+        <span className="sr-only">Matrix</span>
+      </Link>
     </div>
   );
 }
