@@ -10,11 +10,11 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden">
       <div className="w-full flex h-16 items-center justify-between px-4 md:px-6 lg:px-8">
         <Link href="/" className="flex items-center">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-6">
             <Image
               src="/web3privacy_eye.webp"
               alt="Web3Privacy Eye"
-              className="w-auto h-16 md:h-20 lg:h-24 opacity-50"
+              className="w-20 h-16 md:w-24 md:h-20 lg:w-28 lg:h-24 opacity-50"
               width={130}
               height={130}
               priority
@@ -44,7 +44,7 @@ export function Header() {
 
         <div className="flex items-center gap-6">
           <Button variant="secondary" className="hidden md:flex border" asChild>
-            <Link href={NAVIGATION_LINKS.ADD_PROJECT}>ADD PROJECT</Link>
+            <Link href={NAVIGATION_LINKS.ADD_PROJECT}>+ ADD PROJECT</Link>
           </Button>
 
           <SocialIcons className="hidden lg:flex" />
