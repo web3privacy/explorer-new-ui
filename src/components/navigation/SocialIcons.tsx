@@ -31,19 +31,6 @@ export function SocialIcons({ className }: SocialIconsProps) {
         <span className="sr-only">Telegram</span>
       </Link>
       <Link
-        href="https://github.com/web3privacy"
-        className="text-foreground/60 hover:text-foreground/80 transition-colors"
-      >
-        <Image
-          src="/github-mark-white.png"
-          alt="GitHub"
-          width={16}
-          height={16}
-          className="h-6 w-6"
-        />
-        <span className="sr-only">GitHub</span>
-      </Link>
-      <Link
         href="https://matrix.to/#/%23web3privacy:matrix.org"
         className="text-foreground/60 hover:text-foreground/80 transition-colors"
       >
@@ -55,6 +42,19 @@ export function SocialIcons({ className }: SocialIconsProps) {
           className="h-6 w-6 brightness-0 invert"
         />
         <span className="sr-only">Matrix</span>
+      </Link>
+      <Link
+        href="https://github.com/web3privacy"
+        className="text-foreground/60 hover:text-foreground/80 transition-colors"
+      >
+        <Image
+          src="/github-mark-white.png"
+          alt="GitHub"
+          width={16}
+          height={16}
+          className="h-6 w-6"
+        />
+        <span className="sr-only">GitHub</span>
       </Link>
     </div>
   );
