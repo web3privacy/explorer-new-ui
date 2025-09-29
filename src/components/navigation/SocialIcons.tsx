@@ -1,6 +1,7 @@
 import { Link } from "@/components/ui/link";
 import { cn } from "@/lib/utils";
-import { Github, Send, Twitter } from "lucide-react";
+import { Github, Send } from "lucide-react";
+import Image from "next/image";
 
 interface SocialIconsProps {
   className?: string;
@@ -13,7 +14,13 @@ export function SocialIcons({ className }: SocialIconsProps) {
         href="https://twitter.com/web3privacy"
         className="text-foreground/60 hover:text-foreground/80 transition-colors"
       >
-        <Twitter className="h-4 w-4" />
+        <Image
+          src="/x-logo-white.png"
+          alt="X"
+          width={16}
+          height={16}
+          className="h-4 w-4"
+        />
         <span className="sr-only">X</span>
       </Link>
       <Link
