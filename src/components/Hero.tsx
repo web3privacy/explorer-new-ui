@@ -2,14 +2,12 @@
 
 import { Component } from "@/components/ui/etheral-shadow";
 import SearchInput from "@/components/ui/search-input";
+import { scrollToProjectsSection } from "@/lib/scroll-utils";
 import Image from "next/image";
 
 export function Hero() {
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById("projects-section");
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToProjectsSection();
   };
 
   return (

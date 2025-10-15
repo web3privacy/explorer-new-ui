@@ -4,6 +4,10 @@ import { ArrowRightIcon, SearchIcon } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
 
 import { Input } from "@/components/ui/input";
+import {
+  autoScrollWithFrame,
+  scrollToProjectsSection,
+} from "@/lib/scroll-utils";
 import { projectsSearchParams } from "@/types/projectFilters";
 import { useQueryState } from "nuqs";
 
@@ -16,11 +20,28 @@ export default function SearchInput() {
 
   useEffect(() => {
     setSearchValue(query ?? "");
+
+    // Auto-scroll to results if user navigates with search params
+    if (query && query.trim()) {
+      // Wait for any potential layout shifts after navigation
+      const timer = setTimeout(() => {
+        scrollToProjectsSection();
+      }, 300);
+
+      return () => clearTimeout(timer);
+    }
   }, [query]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setQuery(searchValue || null);
+
+    // Only proceed if there's actually a search value
+    if (searchValue.trim()) {
+      setQuery(searchValue.trim() || null);
+
+      // Auto-scroll to projects section after search
+      autoScrollWithFrame(() => scrollToProjectsSection());
+    }
   };
 
   return (
