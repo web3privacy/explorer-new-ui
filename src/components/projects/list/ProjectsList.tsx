@@ -5,6 +5,7 @@ import {
   ProjectFiltersSchema,
   projectsSearchParams,
 } from "@/types/projectFilters";
+import { generatePageNumbers } from "@/lib/pagination-utils";
 import Link from "next/link";
 import { createLoader, SearchParams } from "nuqs/server";
 import { ProjectCard } from "./ProjectCard";
@@ -41,9 +42,11 @@ export async function ProjectsList({
     );
   }
 
-  const totalPages = Math.ceil(
-    (data.pagination?.total || 0) / (data.pagination?.pageSize || 1)
-  );
+  const pageSize = data.pagination?.pageSize || 50;
+  const totalPages =
+    pageSize > 0
+      ? Math.ceil((data.pagination?.total || 0) / pageSize)
+      : 1;
   const currentPage = data.pagination?.page || 1;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,10 +66,7 @@ export async function ProjectsList({
         <span className="text-sm text-muted-foreground">|</span>
 
         <p className="text-sm text-muted-foreground mb-4">
-          Page {data?.pagination?.page} of{" "}
-          {Math.ceil(
-            (data?.pagination?.total || 0) / (data?.pagination?.pageSize || 1)
-          )}
+          Page {data?.pagination?.page} of {totalPages}
         </p>
 
         <span className="text-sm text-muted-foreground">|</span>
@@ -83,15 +83,61 @@ export async function ProjectsList({
         ))}
       </ul>
       <div className="flex justify-center gap-4 my-8">
-        {currentPage > 1 && (
-          <Button variant="default" asChild>
-            <Link href={buildPageUrl(params, currentPage - 1)}>← PREVIOUS</Link>
-          </Button>
-        )}
-        {currentPage < totalPages && (
-          <Button variant="default" asChild>
-            <Link href={buildPageUrl(params, currentPage + 1)}>NEXT →</Link>
-          </Button>
+        {/* Numbered Page Buttons */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            {currentPage > 1 && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href={buildPageUrl(params, currentPage - 1)}>
+                  ← PREVIOUS
+                </Link>
+              </Button>
+            )}
+
+            {generatePageNumbers(currentPage, totalPages).map((page, index) => {
+              if (page === "ellipsis") {
+                // first ellipsis is always at index 1 (after page 1)
+                const isFirstEllipsis = index === 1;
+                const ellipsisKey = isFirstEllipsis
+                  ? "ellipsis-start"
+                  : `ellipsis-end-${index}`;
+
+                return (
+                  <span
+                    key={ellipsisKey}
+                    className="px-2 text-muted-foreground"
+                    aria-label="More pages"
+                    aria-hidden="true"
+                  >
+                    ...
+                  </span>
+                );
+              }
+
+              const isCurrentPage = page === currentPage;
+
+              return (
+                <Button
+                  key={page}
+                  variant={isCurrentPage ? "default" : "outline"}
+                  size="sm"
+                  asChild
+                  aria-label={`Go to page ${page}`}
+                  aria-current={isCurrentPage ? "page" : undefined}
+                >
+                  <Link href={buildPageUrl(params, page)}>{page}</Link>
+                </Button>
+              );
+            })}
+
+            {currentPage < totalPages && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href={buildPageUrl(params, currentPage + 1)}>
+                  NEXT →
+                </Link>
+              </Button>
+            )}
+          </div>
         )}
       </div>
     </div>
