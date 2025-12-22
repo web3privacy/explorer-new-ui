@@ -11,6 +11,8 @@ export function Footer() {
             <div className="md:col-span-2">
               <Link
                 href="https://hackmd.io/@m-f-/HJZ3aZSekl"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-2"
               >
                 <Image
@@ -49,6 +51,7 @@ export function Footer() {
                   <li key={item.label}>
                     <UILink
                       href={item.href}
+                      showExternalDialog={false}
                       className="text-base text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
@@ -82,6 +85,7 @@ export function Footer() {
                   <li key={item.label}>
                     <UILink
                       href={item.href}
+                      showExternalDialog={false}
                       className="text-base text-foreground/60 hover:text-foreground/80 transition-colors"
                     >
                       {item.label}
@@ -97,6 +101,7 @@ export function Footer() {
               Built with ❤️ by the{" "}
               <UILink
                 href="https://web3privacy.info/about/"
+                showExternalDialog={false}
                 className="underline decoration-1 underline-offset-4"
               >
                 Web3Privacy Now
@@ -104,6 +109,7 @@ export function Footer() {
               team. The source code is available on{" "}
               <UILink
                 href="https://github.com/web3privacy/web3privacy-now"
+                showExternalDialog={false}
                 className="underline decoration-1 underline-offset-4"
               >
                 GitHub
