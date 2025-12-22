@@ -40,7 +40,7 @@ export function Footer() {
                   },
                   { label: "Events", href: "https://web3privacy.info/events/" },
                   {
-                    label: "Privacy Database",
+                    label: "Projects Database",
                     href: "https://github.com/web3privacy/explorer-data",
                   },
                   {
