@@ -40,8 +40,8 @@ export function Footer() {
                   },
                   { label: "Events", href: "https://web3privacy.info/events/" },
                   {
-                    label: "Privacy Explorer",
-                    href: "https://docs.web3privacy.info/projects/privacy-explorer/",
+                    label: "Privacy Database",
+                    href: "https://github.com/web3privacy/explorer-data",
                   },
                   {
                     label: "How to get involved",
@@ -70,8 +70,8 @@ export function Footer() {
                     href: "https://news.web3privacy.info/",
                   },
                   {
-                    label: "Privacy database",
-                    href: "https://github.com/web3privacy/web3privacy",
+                    label: "Privacy Academy",
+                    href: "https://academy.web3privacy.info/",
                   },
                   {
                     label: "Grants/Support Us",
