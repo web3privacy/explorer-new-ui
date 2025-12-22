@@ -79,7 +79,7 @@ export function Footer() {
                   },
                   {
                     label: "Talks",
-                    href: "https://docs.web3privacy.info/events/",
+                    href: "https://www.youtube.com/@Web3PrivacyNow",
                   },
                 ].map((item) => (
                   <li key={item.label}>
