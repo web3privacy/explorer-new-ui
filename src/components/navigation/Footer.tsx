@@ -35,12 +35,12 @@ export function Footer() {
               <ul className="space-y-3">
                 {[
                   {
-                    label: "Manifesto",
-                    href: "https://docs.web3privacy.info/about-us/manifesto/",
+                    label: "Privacy Builder Pack",
+                    href: "https://build.web3privacy.info/",
                   },
                   { label: "Events", href: "https://web3privacy.info/events/" },
                   {
-                    label: "Projects Database",
+                    label: "Database",
                     href: "https://github.com/web3privacy/explorer-data",
                   },
                   {
