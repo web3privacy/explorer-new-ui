@@ -63,8 +63,8 @@ export function Footer() {
               <ul className="space-y-3">
                 {[
                   {
-                    label: "Articles",
-                    href: "https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073",
+                    label: "News",
+                    href: "https://news.web3privacy.info/",
                   },
                   {
                     label: "Privacy database",
