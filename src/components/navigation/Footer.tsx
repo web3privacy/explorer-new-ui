@@ -44,8 +44,8 @@ export function Footer() {
                     href: "https://github.com/web3privacy/explorer-data",
                   },
                   {
-                    label: "How to get involved",
-                    href: "https://docs.web3privacy.info/get-involved/",
+                    label: "Privacy Awards 2025",
+                    href: "https://awards.web3privacy.info/",
                   },
                 ].map((item) => (
                   <li key={item.label}>
@@ -74,8 +74,8 @@ export function Footer() {
                     href: "https://academy.web3privacy.info/",
                   },
                   {
-                    label: "Grants/Support Us",
-                    href: "https://github.com/web3privacy/grants",
+                    label: "Hackathons Report",
+                    href: "https://github.com/web3privacy/research/blob/main/initiatives/ethereum-privacy-ecosystem/resources/hackathons/visuals/Ethereum%20Privacy%20Ecosystem%20Research.pdf",
                   },
                   {
                     label: "Talks",
