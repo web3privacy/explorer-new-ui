@@ -44,8 +44,8 @@ export function Footer() {
                     href: "https://github.com/web3privacy/explorer-data",
                   },
                   {
-                    label: "Privacy Awards 2025",
-                    href: "https://awards.web3privacy.info/",
+                    label: "Personal Stacks",
+                    href: "https://stacks.web3privacy.info/",
                   },
                 ].map((item) => (
                   <li key={item.label}>
