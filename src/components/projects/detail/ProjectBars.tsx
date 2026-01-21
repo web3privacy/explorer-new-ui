@@ -7,7 +7,7 @@ interface ProjectBarsProps {
 }
 
 const RATING_MAPPINGS = [
-  { type: "openess", icon: Eye },
+  { type: "openness", icon: Eye },
   { type: "technology", icon: Cpu },
   { type: "privacy", icon: Lock },
 ] as const;
