@@ -89,6 +89,10 @@ export function ProjectRatingWithDetails({
         {["openess", "technology", "privacy"].map((type) => {
           const rating = ratings.find((r) => r.type.toLowerCase() === type);
           if (!rating) return null;
+          // TODO: fix data on backend
+          if (rating.type === "openess") {
+            rating.name = "Openness";
+          }
           const color = getRatingColor(rating.percentagePoints);
           const label = getRatingLabel(rating.percentagePoints);
           return (
