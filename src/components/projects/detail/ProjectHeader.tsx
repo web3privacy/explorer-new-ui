@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -8,8 +9,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { NAVIGATION_LINKS } from "@/lib/constants";
 import { Project } from "@/types/project";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Pencil } from "lucide-react";
 import { ProjectToolbar } from "./ProjectToolbar";
 
 interface ProjectHeaderProps {
@@ -50,18 +52,28 @@ export function ProjectHeader({ project, ecosystems }: ProjectHeaderProps) {
           </Avatar>
 
           <div className="space-y-3 min-w-0 flex-1">
-            {project.links?.web ? (
-              <Link href={project.links.web} className="group">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight inline-flex items-center gap-2 group-hover:text-primary transition-colors font-dm-mono">
+            <div className="flex items-center gap-3">
+              {project.links?.web ? (
+                <Link href={project.links.web} className="group">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight inline-flex items-center gap-2 group-hover:text-primary transition-colors font-dm-mono">
+                    {project.name}
+                    <ExternalLink className="size-4 md:size-5 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  </h1>
+                </Link>
+              ) : (
+                <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-dm-mono">
                   {project.name}
-                  <ExternalLink className="size-4 md:size-5 opacity-60 group-hover:opacity-100 transition-opacity" />
                 </h1>
+              )}
+              <Link
+                href={`${NAVIGATION_LINKS.UPDATE_PROJECT}/${project.id}/edit`}
+              >
+                <Button variant="outline" size="sm">
+                  <Pencil className="size-4" />
+                  Update
+                </Button>
               </Link>
-            ) : (
-              <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-dm-mono">
-                {project.name}
-              </h1>
-            )}
+            </div>
 
             {project.categories && project.categories.length > 0 && (
               <div className="flex flex-wrap gap-2">
