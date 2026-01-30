@@ -18,6 +18,7 @@ export const NAVIGATION_LINKS = {
   SCORING_INTERNAL: "/scoring",
   CONTRIBUTE: "https://github.com/web3privacy/explorer-data",
   ADD_PROJECT: "https://explorer-app-mu.vercel.app/project/create",
+  UPDATE_PROJECT: "https://explorer-app-mu.vercel.app/project",
 } as const;
 
 export const HEADER_MENU_ITEMS = [
