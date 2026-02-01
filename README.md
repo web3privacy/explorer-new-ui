@@ -8,6 +8,12 @@ This is the new UI for the [Web3Privacy Explorer](https://explorer.web3privacy.i
 - Node.js (v18 or higher recommended)
 - npm (comes with Node.js)
 
+> **Note:** Node.js 25 is not supported due to localStorage polyfill issues:
+> ```
+> Warning: `--localstorage-file` was provided without a valid path
+> TypeError: localStorage.getItem is not a function
+> ```
+
 ### Installation
 
 1. Install dependencies:
