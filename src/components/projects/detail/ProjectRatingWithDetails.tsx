@@ -86,13 +86,9 @@ export function ProjectRatingWithDetails({
       </svg>
       {/* Always-visible details */}
       <div className="w-full space-y-2">
-        {["openess", "technology", "privacy"].map((type) => {
+        {["openness", "technology", "privacy"].map((type) => {
           const rating = ratings.find((r) => r.type.toLowerCase() === type);
           if (!rating) return null;
-          // TODO: fix data on backend
-          if (rating.type === "openess") {
-            rating.name = "Openness";
-          }
           const color = getRatingColor(rating.percentagePoints);
           const label = getRatingLabel(rating.percentagePoints);
           return (
