@@ -67,10 +67,7 @@ const AboutPage: NextPage = () => {
               />
             </li>
             <li>
-              <Link
-                href="https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/s9flkE6tMaJ4f2tzWu-FmDy7Zx_TRPe3jdXr2iYmYH0"
-                showExternalDialog={false}
-              >
+              <Link href="/scoring" showExternalDialog={false}>
                 Scoring Mechanism (learn more about this here)
               </Link>
               <img src="/about-scoring-mechanism.png" alt="Scoring mechanism" />
@@ -175,17 +172,11 @@ const AboutPage: NextPage = () => {
             in building the application are all things that help us enormously.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4 space-y-2">
-            <Link
-              href="https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/Ri2ZMIq6Os-ZKQyT_l6a5F1-gJURySvvwNRKzBvNpWM"
-              showExternalDialog={false}
-            >
+            <Link href="/scoring" showExternalDialog={false}>
               Learn how to submit your project here
             </Link>
             <br />
-            <Link
-              href="https://mirror.xyz/0x0f1F3DAf416B74DB3DE55Eb4D7513a80F4841073/yDbRRq8FjSogK7iUWdiRKkm54wvx6DgRt99gFuineuY"
-              showExternalDialog={false}
-            >
+            <Link href="/scoring" showExternalDialog={false}>
               Learn how to edit an existing project here
             </Link>
           </p>

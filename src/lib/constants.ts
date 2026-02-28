@@ -23,7 +23,7 @@ export const NAVIGATION_LINKS = {
 
 export const HEADER_MENU_ITEMS = [
   { text: "About", href: NAVIGATION_LINKS.ABOUT_INTERNAL },
-  { text: "Scoring", href: NAVIGATION_LINKS.SCORING_EXTERNAL },
+  { text: "Scoring", href: NAVIGATION_LINKS.SCORING_INTERNAL },
   { text: "Contribute", href: NAVIGATION_LINKS.CONTRIBUTE },
 ] as const;
 

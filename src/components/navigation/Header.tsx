@@ -36,8 +36,9 @@ export function Header() {
               key={item.href}
               href={item.href}
               className="font-dm-mono text-muted-foreground"
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(item.href.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
             >
               {item.text}
             </Link>
