@@ -47,13 +47,7 @@ export function Header() {
 
         <div className="flex items-center gap-6">
           <Button variant="secondary" className="hidden md:flex border" asChild>
-            <Link
-              href={NAVIGATION_LINKS.ADD_PROJECT}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              + ADD PROJECT
-            </Link>
+            <Link href={NAVIGATION_LINKS.ADD_PROJECT}>+ ADD PROJECT</Link>
           </Button>
 
           <SocialIcons className="hidden lg:flex" />
