@@ -46,3 +46,12 @@ export interface ProjectFormReferenceData {
 export interface BasicInfoTabHandle {
   validate: () => Promise<boolean>;
 }
+
+export interface ProjectSubmissionRequest {
+  project: ProjectDraft;
+  logoDataUrl?: string;
+}
+
+export interface ProjectSubmissionResponse {
+  prUrl: string;
+}
