@@ -9,6 +9,8 @@ interface ProjectFormFooterProps {
   isPublishing: boolean;
   prUrl?: string;
   errorMessage?: string;
+  publishLabel?: string;
+  publishingLabel?: string;
 }
 
 export function ProjectFormFooter({
@@ -17,6 +19,8 @@ export function ProjectFormFooter({
   isPublishing,
   prUrl,
   errorMessage,
+  publishLabel = "PUBLISH",
+  publishingLabel = "PUBLISHING...",
 }: ProjectFormFooterProps) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-border bg-background">
@@ -58,7 +62,7 @@ export function ProjectFormFooter({
           disabled={isPublishing}
           onClick={onPublish}
         >
-          {isPublishing ? "PUBLISHING..." : "PUBLISH"}
+          {isPublishing ? publishingLabel : publishLabel}
         </Button>
       </div>
     </div>

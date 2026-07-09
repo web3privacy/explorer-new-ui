@@ -1,21 +1,38 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { ProjectForm } from "@/components/project-form/ProjectForm";
 import { getAssetCustodyTypes } from "@/queries/assetCustodyTypes.queries";
 import { getAssets } from "@/queries/assets.queries";
 import { getCategories } from "@/queries/categories.queries";
 import { getEcosystems } from "@/queries/ecosystems.queries";
+import { getProject } from "@/queries/projects.queries";
 import { getProjectPhases } from "@/queries/projectPhases.queries";
 import { getSignInRequirements } from "@/queries/signInRequirements.queries";
 import { getUsecases } from "@/queries/usecases.queries";
 
-export const metadata: Metadata = {
-  title: "Create Project - Web3Privacy Explorer",
-  description: "Submit a new privacy-focused Web3 project to the explorer.",
+type PageProps = {
+  params: Promise<{ id: string }>;
 };
 
-export default async function ProjectCreatePage() {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const project = await getProject(id);
+    return { title: `Edit ${project.name} - Web3Privacy Explorer` };
+  } catch {
+    return { title: "Project Not Found - Web3Privacy Explorer" };
+  }
+}
+
+export default async function ProjectEditPage({ params }: PageProps) {
+  const { id } = await params;
+
   const [
+    project,
     categories,
     usecases,
     ecosystems,
@@ -24,6 +41,7 @@ export default async function ProjectCreatePage() {
     custodyTypes,
     signInRequirements,
   ] = await Promise.all([
+    getProject(id).catch(() => notFound()),
     getCategories(),
     getUsecases(),
     getEcosystems(),
@@ -35,7 +53,10 @@ export default async function ProjectCreatePage() {
 
   return (
     <ProjectForm
-      mode="create"
+      mode="edit"
+      projectId={id}
+      initialDraft={project}
+      initialLogoUrl={project.logos?.[0]?.url}
       referenceData={{
         categories,
         usecases,

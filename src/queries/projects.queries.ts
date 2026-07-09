@@ -1,4 +1,5 @@
 import { GETProjectsResponse } from "@/app/api/projects/route";
+import { Project } from "@/types/project";
 import { ProjectFilters } from "@/types/projectFilters";
 
 export const createParams = (filters: ProjectFilters): string => {
@@ -39,7 +40,7 @@ export async function getProjects(
   return res.json();
 }
 
-export async function getProject(id: string) {
+export async function getProject(id: string): Promise<Project> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const res = await fetch(`${baseUrl}/api/projects/${id}`, {
     next: { revalidate: 300 }, // Cache for 5 minutes (300 seconds)

@@ -10,6 +10,7 @@ import {
   BASE_BRANCH,
   OWNER,
   REPO,
+  deleteFolder,
   extensionForMimeType,
   getOctokit,
   parseDataUrl,
@@ -18,9 +19,14 @@ import {
   upsertFile,
 } from "@/lib/githubProjectSubmissions";
 
-export async function POST(
-  req: NextRequest
+type RouteParams = { params: Promise<{ id: string }> };
+
+export async function PUT(
+  req: NextRequest,
+  { params }: RouteParams
 ): Promise<NextResponse<ProjectSubmissionResponse | { error: string }>> {
+  const { id: originalId } = await params;
+
   let body: ProjectSubmissionRequest;
   try {
     body = await req.json();
@@ -37,8 +43,6 @@ export async function POST(
     );
   }
 
-  const id = slugify(name);
-
   let octokit: Octokit;
   try {
     octokit = getOctokit();
@@ -51,14 +55,15 @@ export async function POST(
   }
 
   try {
-    if (await projectExists(octokit, id)) {
+    if (!(await projectExists(octokit, originalId))) {
       return NextResponse.json(
-        { error: `A project with id '${id}' already exists` },
-        { status: 409 }
+        { error: `Project '${originalId}' not found` },
+        { status: 404 }
       );
     }
 
-    const yamlContent = yaml.stringify({ ...project, id });
+    const newId = slugify(name);
+    const yamlContent = yaml.stringify({ ...project, id: newId });
 
     const { data: baseRef } = await octokit.git.getRef({
       owner: OWNER,
@@ -66,7 +71,7 @@ export async function POST(
       ref: `heads/${BASE_BRANCH}`,
     });
 
-    const branch = `${id}-project-create-${Date.now()}`;
+    const branch = `${newId}-project-update-${Date.now()}`;
     await octokit.git.createRef({
       owner: OWNER,
       repo: REPO,
@@ -74,12 +79,21 @@ export async function POST(
       sha: baseRef.object.sha,
     });
 
+    if (newId !== originalId) {
+      await deleteFolder(
+        octokit,
+        `src/projects/${originalId}`,
+        branch,
+        `Removing old project folder: ${originalId}`
+      );
+    }
+
     await upsertFile(
       octokit,
-      `src/projects/${id}/index.yaml`,
+      `src/projects/${newId}/index.yaml`,
       Buffer.from(yamlContent, "utf-8").toString("base64"),
       branch,
-      `Create project: ${name}`
+      `Update project: ${originalId}`
     );
 
     if (logoDataUrl) {
@@ -87,10 +101,10 @@ export async function POST(
       const ext = extensionForMimeType(mimeType);
       await upsertFile(
         octokit,
-        `src/projects/${id}/logo.${ext}`,
+        `src/projects/${newId}/logo.${ext}`,
         base64,
         branch,
-        `Add logo for project: ${name}`
+        `Update logo for project: ${originalId}`
       );
     }
 
@@ -99,13 +113,13 @@ export async function POST(
       repo: REPO,
       head: branch,
       base: BASE_BRANCH,
-      title: `Create project: ${name}`,
-      body: `Initiating the creation of project: ${name}`,
+      title: `Update project: ${originalId}`,
+      body: `Updating the project: ${originalId}`,
     });
 
     return NextResponse.json({ prUrl: pullRequest.html_url });
   } catch (error) {
-    console.error("Error creating project submission PR:", error);
+    console.error("Error creating project update PR:", error);
     return NextResponse.json(
       { error: "Failed to open pull request on explorer-data" },
       { status: 502 }

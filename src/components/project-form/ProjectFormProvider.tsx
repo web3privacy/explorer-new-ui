@@ -63,13 +63,16 @@ export function validateProjectName(name: string): string | undefined {
 export function ProjectFormProvider({
   children,
   initialDraft,
+  initialLogoUrl,
 }: {
   children: React.ReactNode;
   initialDraft?: ProjectDraft;
+  initialLogoUrl?: string;
 }) {
   const [state, dispatch] = useReducer(reducer, {
     draft: initialDraft ?? {},
     name: initialDraft?.name ?? "Untitled",
+    logoPreviewUrl: initialLogoUrl,
     activeTabIndex: 0,
   });
 

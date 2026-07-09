@@ -10,7 +10,7 @@ import {
 import { ProjectFormFooter } from "./ProjectFormFooter";
 import { ProjectFormHeader } from "./ProjectFormHeader";
 import { ProjectFormTabNav } from "./ProjectFormTabNav";
-import { submitProject } from "./submitProject";
+import { submitProject, updateProject } from "./submitProject";
 import { AssetsTab } from "./tabs/AssetsTab";
 import { BasicInfoTab } from "./tabs/BasicInfoTab";
 import { FundingTab } from "./tabs/FundingTab";
@@ -20,21 +20,49 @@ import { PrivacyTab } from "./tabs/PrivacyTab";
 import { SecurityTab } from "./tabs/SecurityTab";
 import { TeamTab } from "./tabs/TeamTab";
 import { TechnologyTab } from "./tabs/TechnologyTab";
-import { BasicInfoTabHandle, ProjectFormReferenceData } from "./types";
+import {
+  BasicInfoTabHandle,
+  ProjectDraft,
+  ProjectFormReferenceData,
+} from "./types";
 
-interface ProjectCreateFormProps {
+interface ProjectFormProps {
+  mode: "create" | "edit";
+  projectId?: string;
+  initialDraft?: ProjectDraft;
+  initialLogoUrl?: string;
   referenceData: ProjectFormReferenceData;
 }
 
-export function ProjectCreateForm({ referenceData }: ProjectCreateFormProps) {
+export function ProjectForm({
+  mode,
+  projectId,
+  initialDraft,
+  initialLogoUrl,
+  referenceData,
+}: ProjectFormProps) {
   return (
-    <ProjectFormProvider>
-      <ProjectCreateFormInner referenceData={referenceData} />
+    <ProjectFormProvider initialDraft={initialDraft} initialLogoUrl={initialLogoUrl}>
+      <ProjectFormInner
+        mode={mode}
+        projectId={projectId}
+        referenceData={referenceData}
+      />
     </ProjectFormProvider>
   );
 }
 
-function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
+interface ProjectFormInnerProps {
+  mode: "create" | "edit";
+  projectId?: string;
+  referenceData: ProjectFormReferenceData;
+}
+
+function ProjectFormInner({
+  mode,
+  projectId,
+  referenceData,
+}: ProjectFormInnerProps) {
   const router = useRouter();
   const { draft, activeTabId, logoPreviewUrl, name, nameError } =
     useProjectForm();
@@ -43,7 +71,8 @@ function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
   const [prUrl, setPrUrl] = React.useState<string>();
   const [errorMessage, setErrorMessage] = React.useState<string>();
 
-  const handleCancel = () => router.push("/");
+  const handleCancel = () =>
+    router.push(mode === "edit" ? `/project/${projectId}` : "/");
 
   const handlePublish = async () => {
     if (nameError) {
@@ -56,10 +85,19 @@ function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
       if (!valid) return;
     }
 
+    // The existing logo is a plain https:// URL; only a freshly uploaded
+    // file (a data: URL) should ever be sent to the submission API.
+    const logoDataUrl = logoPreviewUrl?.startsWith("data:")
+      ? logoPreviewUrl
+      : undefined;
+
     setIsPublishing(true);
     setErrorMessage(undefined);
     try {
-      const result = await submitProject({ ...draft, name }, logoPreviewUrl);
+      const result =
+        mode === "edit"
+          ? await updateProject(projectId!, { ...draft, name }, logoDataUrl)
+          : await submitProject({ ...draft, name }, logoDataUrl);
       setPrUrl(result.prUrl);
     } catch (error) {
       setErrorMessage(
@@ -105,6 +143,8 @@ function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
         isPublishing={isPublishing}
         prUrl={prUrl}
         errorMessage={errorMessage}
+        publishLabel={mode === "edit" ? "SAVE CHANGES" : "PUBLISH"}
+        publishingLabel={mode === "edit" ? "SAVING..." : "PUBLISHING..."}
       />
     </div>
   );
