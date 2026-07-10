@@ -36,27 +36,35 @@ export function ProjectCreateForm({ referenceData }: ProjectCreateFormProps) {
 
 function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
   const router = useRouter();
-  const { draft, activeTabId } = useProjectForm();
+  const { draft, activeTabId, logoPreviewUrl, name, nameError } =
+    useProjectForm();
   const basicInfoRef = React.useRef<BasicInfoTabHandle>(null);
   const [isPublishing, setIsPublishing] = React.useState(false);
-  const [submitState, setSubmitState] = React.useState<
-    "success" | "error" | undefined
-  >();
+  const [prUrl, setPrUrl] = React.useState<string>();
+  const [errorMessage, setErrorMessage] = React.useState<string>();
 
   const handleCancel = () => router.push("/");
 
   const handlePublish = async () => {
+    if (nameError) {
+      setErrorMessage(nameError);
+      return;
+    }
+
     if (activeTabId === "basic-info") {
       const valid = await basicInfoRef.current?.validate();
       if (!valid) return;
     }
 
     setIsPublishing(true);
+    setErrorMessage(undefined);
     try {
-      await submitProject(draft);
-      setSubmitState("success");
-    } catch {
-      setSubmitState("error");
+      const result = await submitProject({ ...draft, name }, logoPreviewUrl);
+      setPrUrl(result.prUrl);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error ? error.message : "Failed to submit project"
+      );
     } finally {
       setIsPublishing(false);
     }
@@ -95,7 +103,8 @@ function ProjectCreateFormInner({ referenceData }: ProjectCreateFormProps) {
         onCancel={handleCancel}
         onPublish={handlePublish}
         isPublishing={isPublishing}
-        submitState={submitState}
+        prUrl={prUrl}
+        errorMessage={errorMessage}
       />
     </div>
   );

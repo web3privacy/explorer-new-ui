@@ -7,20 +7,35 @@ interface ProjectFormFooterProps {
   onCancel: () => void;
   onPublish: () => void;
   isPublishing: boolean;
-  submitState?: "success" | "error";
+  prUrl?: string;
+  errorMessage?: string;
 }
 
 export function ProjectFormFooter({
   onCancel,
   onPublish,
   isPublishing,
-  submitState,
+  prUrl,
+  errorMessage,
 }: ProjectFormFooterProps) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-border bg-background">
-      {submitState === "success" && (
+      {prUrl && (
         <p className="px-3 pt-3 text-center font-dm-mono text-xs text-muted-foreground lg:text-right">
-          Draft assembled — publish flow not yet implemented, see console.
+          Pull request created —{" "}
+          <a
+            href={prUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground"
+          >
+            View it on GitHub
+          </a>
+        </p>
+      )}
+      {errorMessage && (
+        <p className="px-3 pt-3 text-center font-dm-mono text-xs text-destructive lg:text-right">
+          {errorMessage}
         </p>
       )}
       <div
