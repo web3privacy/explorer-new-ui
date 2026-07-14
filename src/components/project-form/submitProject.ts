@@ -43,3 +43,21 @@ export async function submitProject(
   }
   return data;
 }
+
+export async function updateProject(
+  originalId: string,
+  project: ProjectDraft,
+  logoDataUrl?: string
+): Promise<ProjectSubmissionResponse> {
+  const payload = assembleProjectPayload(project);
+  const res = await fetch(`/api/project-submissions/${originalId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ project: payload, logoDataUrl }),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || "Failed to update project");
+  }
+  return data;
+}
